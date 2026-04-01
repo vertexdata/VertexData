@@ -1,0 +1,86 @@
+
+import React from 'react';
+import { Phone, Mail, Twitter, Linkedin, Github } from 'lucide-react';
+
+export const Footer: React.FC = () => {
+  return (
+    <footer className="bg-brand-dark border-t border-white/5 pt-24 pb-12">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
+          <div className="lg:col-span-2">
+            <a href="/" className="text-3xl font-black text-white tracking-tighter mb-6 block">
+              JEVUS<span className="text-brand-blue">.AI</span>
+            </a>
+            <p className="text-gray-500 text-lg mb-8 max-w-sm leading-relaxed">
+              The premium AI automation agency for service-based businesses. We help you capture every lead and automate your front office.
+            </p>
+            <div className="space-y-4">
+              <a href="tel:+156733JEVUS" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors font-bold">
+                <Phone size={18} className="text-brand-blue" />
+                +1 567 33 JEVUS
+              </a>
+              <a href="mailto:info@jevus.ai" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors font-bold">
+                <Mail size={18} className="text-brand-blue" />
+                info@jevus.ai
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Product</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'AI Receptionist', href: '#capabilities' },
+                { name: 'Missed Call Text-Back', href: '#capabilities' },
+                { name: 'Review Automation', href: '#capabilities' },
+                { name: 'Client Portal', href: '#dashboard' }
+              ].map((item) => (
+                <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'About', href: '/about' },
+                { name: 'Integrations', href: '/integrations' },
+                { name: 'Trust Center', href: '/trust' }
+              ].map((item) => (
+                <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Legal</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'Privacy', href: '/privacy' },
+                { name: 'Terms', href: '/terms' },
+                { name: 'Acceptable Use', href: '/acceptable-use' },
+                { name: 'AI Disclosure', href: '/ai-disclosure' },
+                { name: 'Legal', href: '/legal' }
+              ].map((item) => (
+                <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-gray-600 text-sm font-medium">
+            © {new Date().getFullYear()} Jevus.ai. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-gray-600 hover:text-white transition-colors"><Twitter size={20} /></a>
+            <a href="#" className="text-gray-600 hover:text-white transition-colors"><Linkedin size={20} /></a>
+            <a href="#" className="text-gray-600 hover:text-white transition-colors"><Github size={20} /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+

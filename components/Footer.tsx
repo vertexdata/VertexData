@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-dark border-t border-white/5 pt-24 pb-12">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-12 mb-20">
           <div className="lg:col-span-2">
             <a href="/" className="text-3xl font-black text-white tracking-tighter mb-6 block">
               JEVUS<span className="text-brand-blue">.AI</span>
@@ -47,6 +47,28 @@ export const Footer: React.FC = () => {
                 { name: 'Plumbers', href: '/industries/plumbers' },
                 { name: 'HVAC', href: '/industries/hvac' },
                 { name: 'Electricians', href: '/industries/electricians' },
+                { name: 'Roofing', href: '/industries/roofing' },
+                { name: 'Pest Control', href: '/industries/pest-control' },
+                { name: 'Landscaping', href: '/industries/landscaping' },
+                { name: 'Garage Door', href: '/industries/garage-door' },
+                { name: 'General Contractors', href: '/industries/general-contractors' },
+              ].map((item) => (
+                <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Locations</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'Tampa Bay', href: '/locations/tampa-bay' },
+                { name: 'Tampa', href: '/locations/tampa' },
+                { name: 'St. Petersburg', href: '/locations/st-petersburg' },
+                { name: 'Clearwater', href: '/locations/clearwater' },
+                { name: 'Largo', href: '/locations/largo' },
+                { name: 'Seminole', href: '/locations/seminole' },
+                { name: 'Treasure Island', href: '/locations/treasure-island' },
               ].map((item) => (
                 <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
               ))}

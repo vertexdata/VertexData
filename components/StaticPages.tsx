@@ -1,19 +1,27 @@
 import React from 'react';
 import { SimplePage } from './SimplePage';
+import { localBusinessSchema } from './JsonLd';
 
 export const AboutPage = () => (
-  <SimplePage 
-    title="About Jevus" 
+  <SimplePage
+    title="About Jevus"
     subtitle="We're on a mission to help home service businesses capture every opportunity with human-grade AI."
+    seo={{
+      title: 'About Jevus AI | AI Voice Receptionist for Home Services',
+      description: 'Jevus AI was built to solve the missed call problem for plumbers, HVAC techs, and electricians. Learn about our mission to help home service businesses capture every lead.',
+      canonical: '/about',
+      keywords: 'about Jevus AI, AI receptionist company, home service AI company',
+      schema: localBusinessSchema(),
+    }}
     content={
       <div className="space-y-8">
         <p>
-          Jevus.ai was founded with a simple observation: in the home services industry, a missed call is a missed job. 
-          Plumbers, electricians, and HVAC technicians are often too busy in the field to answer the phone, 
+          Jevus.ai was founded with a simple observation: in the home services industry, a missed call is a missed job.
+          Plumbers, electricians, and HVAC technicians are often too busy in the field to answer the phone,
           and customers are too impatient to leave a voicemail.
         </p>
         <p>
-          We built Jevus to bridge that gap. Our AI doesn't just answer the phone—it understands the nuances of 
+          We built Jevus to bridge that gap. Our AI doesn't just answer the phone—it understands the nuances of
           service requests, qualifies leads, and books appointments directly into your calendar.
         </p>
         <div className="grid md:grid-cols-2 gap-6 mt-12">
@@ -32,9 +40,15 @@ export const AboutPage = () => (
 );
 
 export const IntegrationsPage = () => (
-  <SimplePage 
-    title="Integrations" 
+  <SimplePage
+    title="Integrations"
     subtitle="Jevus plays nice with the tools you already use."
+    seo={{
+      title: 'Integrations | Connect Jevus AI to Your Tools | Jevus AI',
+      description: 'Jevus AI integrates with ServiceTitan, Housecall Pro, Jobber, Google Calendar, Zapier, and more. Connect your AI receptionist to your existing workflow.',
+      canonical: '/integrations',
+      keywords: 'AI receptionist integrations, ServiceTitan AI, Housecall Pro integration, Jobber AI receptionist',
+    }}
     content={
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {['ServiceTitan', 'Housecall Pro', 'Jobber', 'Google Calendar', 'Outlook', 'Zapier', 'n8n', 'Slack', 'GoHighLevel'].map(tool => (
@@ -48,9 +62,14 @@ export const IntegrationsPage = () => (
 );
 
 export const PrivacyPage = () => (
-  <SimplePage 
-    title="Privacy Policy" 
+  <SimplePage
+    title="Privacy Policy"
     subtitle="Last Updated: March 2026"
+    seo={{
+      title: 'Privacy Policy | Jevus AI',
+      description: 'Read the Jevus AI privacy policy. Learn how we collect, use, and protect your data when using our AI voice receptionist service.',
+      canonical: '/privacy',
+    }}
     content={
       <div className="space-y-6">
         <section>
@@ -71,9 +90,14 @@ export const PrivacyPage = () => (
 );
 
 export const TermsPage = () => (
-  <SimplePage 
-    title="Terms of Service" 
+  <SimplePage
+    title="Terms of Service"
     subtitle="Please read these terms carefully before using Jevus.ai."
+    seo={{
+      title: 'Terms of Service | Jevus AI',
+      description: 'Terms of service for Jevus AI voice receptionist platform. Read our terms before using our AI phone answering service.',
+      canonical: '/terms',
+    }}
     content={
       <div className="space-y-6">
         <section>
@@ -94,9 +118,14 @@ export const TermsPage = () => (
 );
 
 export const LegalPage = () => (
-  <SimplePage 
-    title="Legal Information" 
+  <SimplePage
+    title="Legal Information"
     subtitle="Corporate and regulatory information."
+    seo={{
+      title: 'Legal Information | Jevus AI',
+      description: 'Legal and regulatory information for Jevus AI. TCPA compliance, entity information, and regulatory details.',
+      canonical: '/legal',
+    }}
     content={
       <div className="space-y-8">
         <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
@@ -113,9 +142,14 @@ export const LegalPage = () => (
 );
 
 export const AcceptableUsePage = () => (
-  <SimplePage 
-    title="Acceptable Use Policy" 
+  <SimplePage
+    title="Acceptable Use Policy"
     subtitle="Guidelines for the responsible use of Jevus.ai."
+    seo={{
+      title: 'Acceptable Use Policy | Jevus AI',
+      description: 'Acceptable use policy for Jevus AI voice receptionist. Guidelines for responsible use of our AI phone answering platform.',
+      canonical: '/acceptable-use',
+    }}
     content={
       <div className="space-y-6">
         <p>This Acceptable Use Policy outlines the rules for using Jevus.ai to ensure a safe and professional environment for all users and their callers.</p>
@@ -139,9 +173,14 @@ export const AcceptableUsePage = () => (
 );
 
 export const AIDisclosurePage = () => (
-  <SimplePage 
-    title="AI Disclosure" 
+  <SimplePage
+    title="AI Disclosure"
     subtitle="Information about how we use Artificial Intelligence."
+    seo={{
+      title: 'AI Disclosure | Jevus AI',
+      description: 'Learn how Jevus AI uses artificial intelligence and voice synthesis technology to provide automated receptionist services for home service businesses.',
+      canonical: '/ai-disclosure',
+    }}
     content={
       <div className="space-y-6">
         <p>Jevus.ai utilizes advanced Large Language Models (LLMs) and voice synthesis technology to provide automated receptionist services.</p>

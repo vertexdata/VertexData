@@ -1,17 +1,26 @@
 import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { SEOHead } from './SEO';
 import { motion } from 'framer-motion';
 
 interface SimplePageProps {
   title: string;
   subtitle?: string;
   content?: React.ReactNode;
+  seo?: {
+    title: string;
+    description: string;
+    canonical?: string;
+    keywords?: string;
+    schema?: object | object[];
+  };
 }
 
-export const SimplePage: React.FC<SimplePageProps> = ({ title, subtitle, content }) => {
+export const SimplePage: React.FC<SimplePageProps> = ({ title, subtitle, content, seo }) => {
   return (
     <div className="bg-brand-dark min-h-screen">
+      {seo && <SEOHead {...seo} />}
       <Header />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-6">

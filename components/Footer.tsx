@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-dark border-t border-white/5 pt-24 pb-12">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
           <div className="lg:col-span-2">
             <a href="/" className="text-3xl font-black text-white tracking-tighter mb-6 block">
               JEVUS<span className="text-brand-blue">.AI</span>
@@ -30,10 +30,23 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Product</h4>
             <ul className="space-y-4">
               {[
-                { name: 'AI Receptionist', href: '#capabilities' },
-                { name: 'Missed Call Text-Back', href: '#capabilities' },
-                { name: 'Review Automation', href: '#capabilities' },
-                { name: 'Client Portal', href: '#dashboard' }
+                { name: 'How It Works', href: '/how-it-works' },
+                { name: 'Pricing', href: '/pricing' },
+                { name: 'Missed Call Calculator', href: '/resources/missed-call-calculator' },
+                { name: 'Integrations', href: '/integrations' },
+              ].map((item) => (
+                <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Industries</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'Plumbers', href: '/industries/plumbers' },
+                { name: 'HVAC', href: '/industries/hvac' },
+                { name: 'Electricians', href: '/industries/electricians' },
               ].map((item) => (
                 <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
               ))}
@@ -45,8 +58,8 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4">
               {[
                 { name: 'About', href: '/about' },
-                { name: 'Integrations', href: '/integrations' },
-                { name: 'Trust Center', href: '/trust' }
+                { name: 'Contact', href: '/contact' },
+                { name: 'Trust Center', href: '/trust' },
               ].map((item) => (
                 <li key={item.name}><a href={item.href} className="text-gray-500 hover:text-white transition-colors text-sm font-medium">{item.name}</a></li>
               ))}

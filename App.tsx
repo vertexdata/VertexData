@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, XCircle, X } from 'lucide-react';
+import { SEOHead } from './components/SEO';
+import { softwareApplicationSchema, faqSchema } from './components/JsonLd';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { DemoCall } from './components/DemoCall';
@@ -22,6 +24,9 @@ import { SetupWizard } from './components/SetupWizard';
 import { OGGenerator } from './components/OGGenerator';
 import { TrustCenter } from './components/TrustCenter';
 import { AboutPage, IntegrationsPage, PrivacyPage, TermsPage, LegalPage, AcceptableUsePage, AIDisclosurePage } from './components/StaticPages';
+import { PlumbersPage } from './components/industries/PlumbersPage';
+import { HVACPage } from './components/industries/HVACPage';
+import { ElectriciansPage } from './components/industries/ElectriciansPage';
 
 function HomePage() {
   const [paymentStatus, setPaymentStatus] = useState<'success' | 'canceled' | null>(null);
@@ -38,8 +43,23 @@ function HomePage() {
     }
   }, [location]);
 
+  const homepageFaqs = [
+    { question: 'What is an AI voice receptionist?', answer: 'An AI voice receptionist is an intelligent phone answering system that uses artificial intelligence to answer calls, book appointments, qualify leads, and dispatch jobs 24/7 — just like a human receptionist, but available around the clock.' },
+    { question: 'How does Jevus AI work for home service businesses?', answer: 'Jevus AI connects to your business phone line and answers every call instantly. It understands service requests, qualifies the lead, books appointments into your calendar, and sends you real-time notifications — all while you focus on the job at hand.' },
+    { question: 'How much do missed calls cost home service businesses?', answer: 'The average missed call costs home service businesses $1,200 in lost revenue. With 27% of calls going unanswered and 85% of callers never leaving voicemail, contractors can lose $45,000 to $120,000 per year to missed calls.' },
+    { question: 'Can Jevus AI handle emergency calls?', answer: 'Yes. Jevus AI detects emergency keywords like burst pipes, no heat, or electrical hazards and immediately escalates with urgent notifications, ensuring critical calls never get lost.' },
+    { question: 'How long does it take to set up Jevus AI?', answer: 'Most businesses are live in under 5 minutes. Simply forward your business line to Jevus, customize your greeting and business rules, and start capturing every call immediately.' },
+  ];
+
   return (
     <>
+      <SEOHead
+        title="AI Voice Receptionist for Home Services | Never Miss a Call | Jevus AI"
+        description="Jevus AI answers every call 24/7 for plumbers, HVAC, and electricians. Stop losing $1,200 per missed call. AI voice receptionist built for home service businesses."
+        canonical="/"
+        keywords="AI voice receptionist, AI answering service, AI receptionist for small business, home service AI, plumber answering service, HVAC answering service"
+        schema={[softwareApplicationSchema(), faqSchema(homepageFaqs)]}
+      />
       <AnimatePresence>
         {paymentStatus && (
           <motion.div 
@@ -121,6 +141,9 @@ function App() {
           <Route path="/acceptable-use" element={<AcceptableUsePage />} />
           <Route path="/ai-disclosure" element={<AIDisclosurePage />} />
           <Route path="/legal" element={<LegalPage />} />
+          <Route path="/industries/plumbers" element={<PlumbersPage />} />
+          <Route path="/industries/hvac" element={<HVACPage />} />
+          <Route path="/industries/electricians" element={<ElectriciansPage />} />
         </Routes>
       </div>
     </Router>

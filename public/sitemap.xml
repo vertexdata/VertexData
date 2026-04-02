@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://jevus.ai/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://jevus.ai/pricing</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://jevus.ai/how-it-works</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://jevus.ai/industries/plumbers</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jevus.ai/industries/hvac</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jevus.ai/industries/electricians</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jevus.ai/use-cases/after-hours-answering</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jevus.ai/use-cases/missed-call-recovery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jevus.ai/vs/answering-service</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jevus.ai/vs/hiring-receptionist</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jevus.ai/resources/missed-call-calculator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jevus.ai/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://jevus.ai/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://jevus.ai/integrations</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://jevus.ai/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://jevus.ai/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

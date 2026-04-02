@@ -35,6 +35,15 @@ import { VsAnsweringServicePage } from './components/vs/VsAnsweringServicePage';
 import { VsHiringReceptionistPage } from './components/vs/VsHiringReceptionistPage';
 import { MissedCallCalculator } from './components/MissedCallCalculator';
 import { ContactPage } from './components/ContactPage';
+import { VsSmithAiPage } from './components/vs/VsSmithAiPage';
+import { VsGoodcallPage } from './components/vs/VsGoodcallPage';
+import { VsRubyPage } from './components/vs/VsRubyPage';
+import { EmergencyDispatchPage } from './components/use-cases/EmergencyDispatchPage';
+import { AppointmentBookingPage } from './components/use-cases/AppointmentBookingPage';
+import { LeadQualificationPage } from './components/use-cases/LeadQualificationPage';
+import { BlogIndex } from './components/blog/BlogIndex';
+import { BlogArticle } from './components/blog/BlogArticle';
+import { blogPosts } from './components/blog/blogData';
 import { RoofingPage } from './components/industries/RoofingPage';
 import { GarageDoorPage } from './components/industries/GarageDoorPage';
 import { PestControlPage } from './components/industries/PestControlPage';
@@ -170,6 +179,19 @@ function App() {
           <Route path="/vs/hiring-receptionist" element={<VsHiringReceptionistPage />} />
           <Route path="/resources/missed-call-calculator" element={<MissedCallCalculator />} />
           <Route path="/contact" element={<ContactPage />} />
+          {/* Additional Comparisons */}
+          <Route path="/vs/smith-ai" element={<VsSmithAiPage />} />
+          <Route path="/vs/goodcall" element={<VsGoodcallPage />} />
+          <Route path="/vs/ruby-receptionists" element={<VsRubyPage />} />
+          {/* Additional Use Cases */}
+          <Route path="/use-cases/emergency-dispatch" element={<EmergencyDispatchPage />} />
+          <Route path="/use-cases/appointment-booking" element={<AppointmentBookingPage />} />
+          <Route path="/use-cases/lead-qualification" element={<LeadQualificationPage />} />
+          {/* Blog */}
+          <Route path="/blog" element={<BlogIndex />} />
+          {blogPosts.map(post => (
+            <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogArticle post={post} />} />
+          ))}
           {/* Additional Industries */}
           <Route path="/industries/roofing" element={<RoofingPage />} />
           <Route path="/industries/garage-door" element={<GarageDoorPage />} />

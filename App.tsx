@@ -27,6 +27,14 @@ import { AboutPage, IntegrationsPage, PrivacyPage, TermsPage, LegalPage, Accepta
 import { PlumbersPage } from './components/industries/PlumbersPage';
 import { HVACPage } from './components/industries/HVACPage';
 import { ElectriciansPage } from './components/industries/ElectriciansPage';
+import { HowItWorksPage } from './components/HowItWorksPage';
+import { PricingPage } from './components/PricingPage';
+import { AfterHoursPage } from './components/use-cases/AfterHoursPage';
+import { MissedCallRecoveryPage } from './components/use-cases/MissedCallRecoveryPage';
+import { VsAnsweringServicePage } from './components/vs/VsAnsweringServicePage';
+import { VsHiringReceptionistPage } from './components/vs/VsHiringReceptionistPage';
+import { MissedCallCalculator } from './components/MissedCallCalculator';
+import { ContactPage } from './components/ContactPage';
 
 function HomePage() {
   const [paymentStatus, setPaymentStatus] = useState<'success' | 'canceled' | null>(null);
@@ -144,6 +152,14 @@ function App() {
           <Route path="/industries/plumbers" element={<PlumbersPage />} />
           <Route path="/industries/hvac" element={<HVACPage />} />
           <Route path="/industries/electricians" element={<ElectriciansPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/use-cases/after-hours-answering" element={<AfterHoursPage />} />
+          <Route path="/use-cases/missed-call-recovery" element={<MissedCallRecoveryPage />} />
+          <Route path="/vs/answering-service" element={<VsAnsweringServicePage />} />
+          <Route path="/vs/hiring-receptionist" element={<VsHiringReceptionistPage />} />
+          <Route path="/resources/missed-call-calculator" element={<MissedCallCalculator />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>

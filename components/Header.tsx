@@ -17,12 +17,11 @@ export const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Demo', href: '#demo' },
-    { name: 'Features', href: '#capabilities' },
-    { name: 'Workflow', href: '#solution' },
-    { name: 'Industries', href: '#use-cases' },
-    { name: 'Dashboard', href: '#dashboard' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'How It Works', href: '/how-it-works' },
+    { name: 'Industries', href: '/industries/plumbers' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Calculator', href: '/resources/missed-call-calculator' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (

@@ -35,6 +35,16 @@ import { VsAnsweringServicePage } from './components/vs/VsAnsweringServicePage';
 import { VsHiringReceptionistPage } from './components/vs/VsHiringReceptionistPage';
 import { MissedCallCalculator } from './components/MissedCallCalculator';
 import { ContactPage } from './components/ContactPage';
+import { RoofingPage } from './components/industries/RoofingPage';
+import { GarageDoorPage } from './components/industries/GarageDoorPage';
+import { PestControlPage } from './components/industries/PestControlPage';
+import { LandscapingPage } from './components/industries/LandscapingPage';
+import { GeneralContractorsPage } from './components/industries/GeneralContractorsPage';
+import {
+  TampaBayPage, TampaPage, StPetersburgPage, ClearwaterPage, LargoPage,
+  SeminolePage, TreasureIslandPage, PinellasParkPage, DunedinPage,
+  PalmHarborPage, SafetyHarborPage,
+} from './components/locations';
 
 function HomePage() {
   const [paymentStatus, setPaymentStatus] = useState<'success' | 'canceled' | null>(null);
@@ -160,6 +170,24 @@ function App() {
           <Route path="/vs/hiring-receptionist" element={<VsHiringReceptionistPage />} />
           <Route path="/resources/missed-call-calculator" element={<MissedCallCalculator />} />
           <Route path="/contact" element={<ContactPage />} />
+          {/* Additional Industries */}
+          <Route path="/industries/roofing" element={<RoofingPage />} />
+          <Route path="/industries/garage-door" element={<GarageDoorPage />} />
+          <Route path="/industries/pest-control" element={<PestControlPage />} />
+          <Route path="/industries/landscaping" element={<LandscapingPage />} />
+          <Route path="/industries/general-contractors" element={<GeneralContractorsPage />} />
+          {/* Location Pages — Tampa Bay Area */}
+          <Route path="/locations/tampa-bay" element={<TampaBayPage />} />
+          <Route path="/locations/tampa" element={<TampaPage />} />
+          <Route path="/locations/st-petersburg" element={<StPetersburgPage />} />
+          <Route path="/locations/clearwater" element={<ClearwaterPage />} />
+          <Route path="/locations/largo" element={<LargoPage />} />
+          <Route path="/locations/seminole" element={<SeminolePage />} />
+          <Route path="/locations/treasure-island" element={<TreasureIslandPage />} />
+          <Route path="/locations/pinellas-park" element={<PinellasParkPage />} />
+          <Route path="/locations/dunedin" element={<DunedinPage />} />
+          <Route path="/locations/palm-harbor" element={<PalmHarborPage />} />
+          <Route path="/locations/safety-harbor" element={<SafetyHarborPage />} />
         </Routes>
       </div>
     </Router>

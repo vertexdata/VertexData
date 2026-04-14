@@ -19,6 +19,9 @@ import { ROI } from './components/ROI';
 import { SocialProof } from './components/SocialProof';
 import { Pricing } from './components/Pricing';
 import { FinalCTA } from './components/FinalCTA';
+import { SpeedToLead } from './components/SpeedToLead';
+import { WhileYoureWorking } from './components/WhileYoureWorking';
+import { BeforeAfter } from './components/BeforeAfter';
 import { Footer } from './components/Footer';
 import { blogPosts } from './components/blog/blogData';
 import { getAllIndustryLocationPages } from './components/seo/seoData';
@@ -157,11 +160,14 @@ function HomePage() {
         <DemoCall />
         <TrustedBy />
         <Problem />
+        <SpeedToLead />
         <ProductDemo />
         <Capabilities />
+        <WhileYoureWorking />
         <Solution />
         <UseCases />
         <HowItWorks />
+        <BeforeAfter />
         <ROI />
         <SocialProof />
         <Pricing />

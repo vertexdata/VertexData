@@ -57,17 +57,26 @@ export const Capabilities: React.FC = () => {
   return (
     <section id="capabilities" className="section-padding">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-blue/10 border border-brand-blue/20 rounded-full text-brand-blue text-sm font-bold uppercase tracking-widest mb-6"
+          >
+            <Zap size={14} />
+            What's Under the Hood
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="heading-lg mb-6"
           >
-            Your Entire Front Desk. <span className="text-brand-blue">Automated.</span>
+            9 Powerful Features.<br /><span className="text-brand-blue">One AI Receptionist.</span>
           </motion.h2>
-          <p className="text-xl text-gray-400">
-            Jevus.ai handles the repetitive tasks so you can focus on the high-value work.
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Every tool your front office needs — answering, booking, texting, reviewing, qualifying, and reporting — all running on autopilot.
           </p>
         </div>
 
@@ -112,7 +121,10 @@ export const Capabilities: React.FC = () => {
         </div>
 
         {/* Secondary Features Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-20 border-t border-white/5">
+        <div className="pt-20 border-t border-white/5">
+          <p className="text-center text-xs font-bold text-gray-600 uppercase tracking-[0.2em] mb-10">And that's not all</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {secondaryFeatures.map((feature, index) => (
             <motion.a
               key={feature.title}

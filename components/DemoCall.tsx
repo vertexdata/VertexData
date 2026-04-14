@@ -20,10 +20,10 @@ const tracks: Track[] = [
   },
   {
     id: 2,
-    title: 'After-Hours HVAC Request',
-    subtitle: 'Late-night AC failure — Jevus detects urgency and dispatches.',
+    title: 'Kitchen Sink Leak',
+    subtitle: 'Customer reports a leak under the sink — Jevus books a same-day visit.',
     src: '/jevus-demo-call-2.wav',
-    icon: '❄️',
+    icon: '🚰',
   },
   {
     id: 3,

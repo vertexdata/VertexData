@@ -12,7 +12,7 @@ const AudioPlayer: React.FC = () => {
   const togglePlay = async () => {
     // Create audio element on first interaction (fixes iOS Safari)
     if (!audioRef.current) {
-      const audio = new Audio('/jevus-demo-call.mp3');
+      const audio = new Audio('/jevus-demo-call.wav');
       audio.preload = 'auto';
       audio.onended = () => setIsPlaying(false);
       audio.onerror = () => setIsPlaying(false);
@@ -31,7 +31,7 @@ const AudioPlayer: React.FC = () => {
       } catch (err) {
         // Retry: some browsers need a fresh Audio object on first user gesture
         try {
-          const freshAudio = new Audio('/jevus-demo-call.mp3');
+          const freshAudio = new Audio('/jevus-demo-call.wav');
           freshAudio.onended = () => setIsPlaying(false);
           freshAudio.onerror = () => setIsPlaying(false);
           audioRef.current = freshAudio;

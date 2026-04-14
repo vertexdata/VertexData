@@ -24,6 +24,8 @@ import { WhileYoureWorking } from './components/WhileYoureWorking';
 import { BeforeAfter } from './components/BeforeAfter';
 import { Footer } from './components/Footer';
 import { blogPosts } from './components/blog/blogData';
+import { FeaturePage } from './components/features/FeaturePage';
+import { features as featureData } from './components/features/featureData';
 import { getAllIndustryLocationPages } from './components/seo/seoData';
 import { IndustryLocationPage } from './components/seo/IndustryLocationPage';
 
@@ -198,6 +200,11 @@ function App() {
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/resources/missed-call-calculator" element={<MissedCallCalculator />} />
+
+            {/* Feature pages */}
+            {featureData.map(f => (
+              <Route key={f.slug} path={`/features/${f.slug}`} element={<FeaturePage data={f} />} />
+            ))}
 
             {/* Industry hub pages */}
             <Route path="/industries/plumbers" element={<PlumbersPage />} />

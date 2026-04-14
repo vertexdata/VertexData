@@ -12,7 +12,7 @@ export const DemoCall: React.FC = () => {
   // Create audio element lazily on first interaction (fixes iOS Safari)
   const getAudio = () => {
     if (!audioRef.current) {
-      const audio = new Audio('/jevus-demo-call.wav');
+      const audio = new Audio('/jevus-demo-call-2.wav');
       audio.preload = 'auto';
       audio.onended = () => setIsPlaying(false);
       audio.onerror = () => setIsPlaying(false);
@@ -42,7 +42,7 @@ export const DemoCall: React.FC = () => {
       } catch (err) {
         // Retry with fresh Audio object
         try {
-          const fresh = new Audio('/jevus-demo-call.wav');
+          const fresh = new Audio('/jevus-demo-call-2.wav');
           fresh.onended = () => setIsPlaying(false);
           fresh.onerror = () => setIsPlaying(false);
           fresh.ontimeupdate = () => {

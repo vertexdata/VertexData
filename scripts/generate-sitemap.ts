@@ -43,6 +43,12 @@ for (const c of comparisons) {
   urls.push(url(`/vs/${c}`, 'monthly', '0.7'));
 }
 
+// Feature pages
+const featureSlugs = ['ai-voice-receptionist', 'appointment-booking', 'missed-call-text-back', 'review-automation', 'lead-qualification', 'sms-alerts', 'client-dashboard', 'integrations', 'white-glove-setup'];
+for (const f of featureSlugs) {
+  urls.push(url(`/features/${f}`, 'monthly', '0.8'));
+}
+
 // Blog
 urls.push(url('/blog', 'weekly', '0.8'));
 for (const post of blogPosts) {

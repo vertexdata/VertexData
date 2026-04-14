@@ -14,33 +14,36 @@ import {
 } from 'lucide-react';
 
 const pillars = [
-  { 
-    icon: Mic2, 
-    title: "AI Voice Receptionist", 
+  {
+    icon: Mic2,
+    title: "AI Voice Receptionist",
     description: "Answers every call 24/7 with natural human conversation. Qualifies leads and handles basic FAQs without you lifting a finger.",
-    color: "brand-blue"
+    color: "brand-blue",
+    href: "/features/ai-voice-receptionist"
   },
-  { 
-    icon: CalendarCheck, 
-    title: "Smart Appointment Booking", 
+  {
+    icon: CalendarCheck,
+    title: "Smart Appointment Booking",
     description: "Automatically books jobs directly into your calendar (Housecall Pro, ServiceTitan, Jobber, etc.) while the customer is still on the line.",
-    color: "brand-violet"
+    color: "brand-violet",
+    href: "/features/appointment-booking"
   },
-  { 
-    icon: MessageSquareText, 
-    title: "Missed Call Text Back", 
+  {
+    icon: MessageSquareText,
+    title: "Missed Call Text Back",
     description: "Instantly texts customers if you miss a call while you're on a job, ensuring they don't call your competitor next.",
-    color: "emerald-500"
+    color: "emerald-500",
+    href: "/features/missed-call-text-back"
   },
 ];
 
 const secondaryFeatures = [
-  { icon: Star, title: "Review Automation", description: "Follow up for 5-star reviews." },
-  { icon: UserCheck, title: "Lead Qualification", description: "Screen callers before booking." },
-  { icon: Bell, title: "SMS Owner Alerts", description: "Instant notifications for new jobs." },
-  { icon: LayoutDashboard, title: "Client Dashboard", description: "Track every call and revenue." },
-  { icon: Zap, title: "Unlimited Integrations", description: "Connect to 1,000+ other apps." },
-  { icon: ShieldCheck, title: "White-Glove Setup", description: "We handle the entire integration." },
+  { icon: Star, title: "Review Automation", description: "Follow up for 5-star reviews.", href: "/features/review-automation" },
+  { icon: UserCheck, title: "Lead Qualification", description: "Screen callers before booking.", href: "/features/lead-qualification" },
+  { icon: Bell, title: "SMS Owner Alerts", description: "Instant notifications for new jobs.", href: "/features/sms-alerts" },
+  { icon: LayoutDashboard, title: "Client Dashboard", description: "Track every call and revenue.", href: "/features/client-dashboard" },
+  { icon: Zap, title: "Unlimited Integrations", description: "Connect to 1,000+ other apps.", href: "/features/integrations" },
+  { icon: ShieldCheck, title: "White-Glove Setup", description: "We handle the entire integration.", href: "/features/white-glove-setup" },
 ];
 
 export const Capabilities: React.FC = () => {
@@ -64,13 +67,14 @@ export const Capabilities: React.FC = () => {
         {/* Main Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {pillars.map((pillar, index) => (
-            <motion.div
+            <motion.a
               key={pillar.title}
+              href={pillar.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-card p-10 border-white/10 group relative overflow-hidden flex flex-col items-center text-center"
+              className="glass-card p-10 border-white/10 group relative overflow-hidden flex flex-col items-center text-center hover:border-brand-blue/30 transition-colors"
             >
               <div className={`absolute inset-0 bg-${pillar.color}/5 opacity-0 group-hover:opacity-100 transition-opacity`}></div>
               <div className={`w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center text-white mb-8 border border-white/10 group-hover:scale-110 transition-transform duration-500`}>
@@ -78,15 +82,17 @@ export const Capabilities: React.FC = () => {
               </div>
               <h3 className="text-2xl font-black text-white mb-4">{pillar.title}</h3>
               <p className="text-gray-400 leading-relaxed text-lg">{pillar.description}</p>
-            </motion.div>
+              <span className="mt-4 text-brand-blue text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">Learn more &rarr;</span>
+            </motion.a>
           ))}
         </div>
 
         {/* Secondary Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-20 border-t border-white/5">
           {secondaryFeatures.map((feature, index) => (
-            <motion.div
+            <motion.a
               key={feature.title}
+              href={feature.href}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -96,9 +102,9 @@ export const Capabilities: React.FC = () => {
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 mb-4 mx-auto border border-white/10 group-hover:text-brand-blue group-hover:border-brand-blue/30 transition-all">
                 <feature.icon size={20} />
               </div>
-              <h4 className="text-sm font-bold text-white mb-2">{feature.title}</h4>
+              <h4 className="text-sm font-bold text-white mb-2 group-hover:text-brand-blue transition-colors">{feature.title}</h4>
               <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold leading-tight">{feature.description}</p>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

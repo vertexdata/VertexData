@@ -7,30 +7,55 @@ export const DemoCall: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(103);
   const [isMuted, setIsMuted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
+  // Create audio element lazily on first interaction (fixes iOS Safari)
+  const getAudio = () => {
+    if (!audioRef.current) {
+      const audio = new Audio('/jevus-demo-call.mp3');
+      audio.preload = 'auto';
+      audio.onended = () => setIsPlaying(false);
+      audio.onerror = () => setIsPlaying(false);
+      audio.ontimeupdate = () => {
+        if (audio.duration) {
+          setProgress((audio.currentTime / audio.duration) * 100);
+        }
+      };
+      audio.onloadedmetadata = () => {
+        setDuration(audio.duration);
+      };
+      audioRef.current = audio;
+    }
+    return audioRef.current;
+  };
+
+  const togglePlay = async () => {
+    const audio = getAudio();
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (err) {
+        // Retry with fresh Audio object
+        try {
+          const fresh = new Audio('/jevus-demo-call.mp3');
+          fresh.onended = () => setIsPlaying(false);
+          fresh.onerror = () => setIsPlaying(false);
+          fresh.ontimeupdate = () => {
+            if (fresh.duration) setProgress((fresh.currentTime / fresh.duration) * 100);
+          };
+          fresh.onloadedmetadata = () => setDuration(fresh.duration);
+          audioRef.current = fresh;
+          await fresh.play();
+          setIsPlaying(true);
+        } catch {
+          setIsPlaying(false);
+        }
       }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      const current = audioRef.current.currentTime;
-      const total = audioRef.current.duration;
-      setProgress((current / total) * 100);
-    }
-  };
-
-  const handleLoadedMetadata = () => {
-    if (audioRef.current) {
-      setDuration(audioRef.current.duration);
     }
   };
 
@@ -41,11 +66,10 @@ export const DemoCall: React.FC = () => {
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const audio = getAudio();
     const seekTime = (parseFloat(e.target.value) / 100) * duration;
-    if (audioRef.current) {
-      audioRef.current.currentTime = seekTime;
-      setProgress(parseFloat(e.target.value));
-    }
+    audio.currentTime = seekTime;
+    setProgress(parseFloat(e.target.value));
   };
 
   return (
@@ -149,14 +173,6 @@ export const DemoCall: React.FC = () => {
 
               {/* Right Side: Controls */}
               <div className="w-full md:w-80 flex flex-col items-center">
-                <audio
-                  ref={audioRef}
-                  src="/jevus-demo-call.mp3"
-                  onTimeUpdate={handleTimeUpdate}
-                  onLoadedMetadata={handleLoadedMetadata}
-                  onEnded={() => setIsPlaying(false)}
-                />
-
                 <button
                   onClick={togglePlay}
                   className="w-24 h-24 rounded-full bg-brand-blue hover:bg-blue-600 text-white flex items-center justify-center shadow-2xl shadow-brand-blue/40 transition-all transform hover:scale-110 active:scale-95 mb-8"
@@ -181,12 +197,11 @@ export const DemoCall: React.FC = () => {
                 </div>
 
                 <div className="mt-6 flex items-center gap-4">
-                  <button 
+                  <button
                     onClick={() => {
-                      if (audioRef.current) {
-                        audioRef.current.muted = !isMuted;
-                        setIsMuted(!isMuted);
-                      }
+                      const audio = getAudio();
+                      audio.muted = !isMuted;
+                      setIsMuted(!isMuted);
                     }}
                     className="p-2 text-gray-400 hover:text-white transition-colors"
                   >

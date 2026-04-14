@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { PlayIcon } from './Icons';
 import { CalendlyButton } from './CalendlyButton';
 import { motion } from 'framer-motion';
@@ -7,26 +7,45 @@ import { Play, Pause, Volume2 } from 'lucide-react';
 
 const AudioPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
+  const togglePlay = async () => {
+    // Create audio element on first interaction (fixes iOS Safari)
+    if (!audioRef.current) {
+      const audio = new Audio('/jevus-demo-call.mp3');
+      audio.preload = 'auto';
+      audio.onended = () => setIsPlaying(false);
+      audio.onerror = () => setIsPlaying(false);
+      audioRef.current = audio;
+    }
+
+    const audio = audioRef.current;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (err) {
+        // Retry: some browsers need a fresh Audio object on first user gesture
+        try {
+          const freshAudio = new Audio('/jevus-demo-call.mp3');
+          freshAudio.onended = () => setIsPlaying(false);
+          freshAudio.onerror = () => setIsPlaying(false);
+          audioRef.current = freshAudio;
+          await freshAudio.play();
+          setIsPlaying(true);
+        } catch {
+          setIsPlaying(false);
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   return (
     <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 max-w-md mx-auto mt-8 mb-12 animate-fade-in">
-      <audio 
-        ref={audioRef} 
-        src="/jevus-demo-call.mp3" 
-        onEnded={() => setIsPlaying(false)}
-      />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
@@ -34,15 +53,15 @@ const AudioPlayer: React.FC = () => {
         </div>
         <div className="text-xs text-gray-400 font-mono">1:43</div>
       </div>
-      
+
       <div className="flex items-center gap-4">
-        <button 
+        <button
           onClick={togglePlay}
-          className="w-12 h-12 rounded-full bg-brand-blue hover:bg-blue-600 flex items-center justify-center text-white transition-colors shadow-lg shadow-brand-blue/20"
+          className="w-12 h-12 rounded-full bg-brand-blue hover:bg-blue-600 flex items-center justify-center text-white transition-colors shadow-lg shadow-brand-blue/20 cursor-pointer"
         >
           {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-1" />}
         </button>
-        
+
         <div className="flex-1 space-y-2">
           <div className="text-sm font-medium text-white">"My water heater is leaking..."</div>
           <div className="h-8 flex items-center gap-0.5">
@@ -56,12 +75,12 @@ const AudioPlayer: React.FC = () => {
             ))}
           </div>
         </div>
-        
+
         <Volume2 size={20} className="text-gray-400" />
       </div>
-      
+
       <p className="text-xs text-center text-gray-400 mt-4">
-        🎙️ Hear it for yourself — most people can't tell it's AI.
+        Hear it for yourself — most people can't tell it's AI.
       </p>
     </div>
   );
@@ -81,11 +100,11 @@ export const Hero: React.FC = () => {
              <span className="text-brand-blue text-sm font-bold uppercase tracking-wider">Experience Jevus Live</span>
              <a href="tel:+156733JEVUS" className="text-white hover:text-brand-blue transition-colors text-sm font-mono ml-2 font-bold">+1 567 33 JEVUS</a>
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight mb-8">
             Every Missed Call Is a Job You <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-violet">Already Lost.</span>
           </h1>
-          
+
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
             Not a robocall. Not a bot. Sounds like a real person — with background noise and everything. Your customers won't know the difference.
           </p>
@@ -94,7 +113,7 @@ export const Hero: React.FC = () => {
 
           <div className="mt-10 flex flex-col items-center space-y-4">
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full">
-              <CalendlyButton 
+              <CalendlyButton
                 className="w-full sm:w-auto bg-brand-blue hover:bg-blue-600 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg shadow-xl shadow-brand-blue/25 cursor-pointer"
                 text="Book a 15-Min Walkthrough"
               />

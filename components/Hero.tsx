@@ -1,20 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
 import { CalendlyButton } from './CalendlyButton';
 
-const industries = [
-  'Plumbing',
-  'HVAC',
-  'Electrical',
-  'Pest Control',
-  'Landscaping',
-  'Roofing',
-  'Appliance Repair',
-  'Painters',
-  'Tree Service',
+const trustBadges = [
+  'No Setup Fee',
+  'Launch in Under 3 Days',
+  'Cancel Anytime',
 ];
-
-const ORBIT_DURATION = 60;
 
 export const Hero: React.FC = () => {
   return (
@@ -22,7 +14,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-gradient-to-r from-brand-blue to-brand-violet rounded-full opacity-10 blur-[100px] -z-10"></div>
 
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
           {/* Left: copy */}
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 rounded-full px-4 py-1.5 mb-8 animate-fade-in">
@@ -54,58 +46,26 @@ export const Hero: React.FC = () => {
                 or call <span className="text-white font-bold underline decoration-brand-blue/40">(567) 335-3887</span>
               </a>
             </div>
-            <p className="mt-6 text-brand-blue font-bold tracking-wide uppercase text-xs">
-              Starting at $497/mo · Cancel Anytime
-            </p>
+
+            <div className="mt-6 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-2">
+              {trustBadges.map((badge) => (
+                <div key={badge} className="flex items-center gap-1.5 text-sm text-white">
+                  <Check size={14} className="text-brand-blue flex-shrink-0" strokeWidth={3} />
+                  <span>{badge}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right: receptionist + orbiting industry pills */}
-          <div className="relative w-full aspect-square max-w-[480px] mx-auto">
-            {/* Soft glow */}
-            <div className="absolute inset-8 bg-gradient-to-br from-brand-blue/30 to-brand-violet/30 rounded-full blur-3xl"></div>
-
-            {/* Center photo */}
-            <div className="absolute inset-[18%] rounded-full overflow-hidden border-2 border-brand-blue/30 shadow-2xl shadow-brand-blue/30">
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                alt="AI receptionist for home service businesses"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/10 via-transparent to-brand-violet/10"></div>
-            </div>
-
-            {/* Orbiting pills */}
-            <motion.div
-              className="absolute inset-0"
-              animate={{ rotate: 360 }}
-              transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-            >
-              {industries.map((industry, i) => {
-                const angle = (360 / industries.length) * i;
-                const rad = (angle * Math.PI) / 180;
-                const radius = 50;
-                const x = 50 + Math.cos(rad) * radius;
-                const y = 50 + Math.sin(rad) * radius;
-                return (
-                  <motion.div
-                    key={industry}
-                    className="absolute"
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-                  >
-                    <div className="bg-brand-dark/90 backdrop-blur-md border border-brand-blue/40 text-white text-[11px] md:text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap shadow-lg shadow-black/30">
-                      {industry}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+          {/* Right: receptionist illustration */}
+          <div className="relative w-full max-w-[560px] mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-violet/20 blur-3xl -z-10"></div>
+            <img
+              src="/images/hero-receptionist.png"
+              alt="AI receptionist for home service businesses"
+              className="w-full h-auto"
+              loading="eager"
+            />
           </div>
         </div>
       </div>

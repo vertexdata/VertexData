@@ -57,9 +57,6 @@ export const Hero: React.FC = () => {
                 className="w-full sm:w-auto bg-brand-blue hover:bg-blue-600 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg shadow-xl shadow-brand-blue/25 cursor-pointer"
                 text="Book a Demo"
               />
-              <a href="tel:+15673353887" className="text-sm text-gray-400 hover:text-white transition-colors">
-                or call <span className="text-white font-bold underline decoration-brand-blue/40">(567) 335-3887</span>
-              </a>
             </div>
 
             <div className="mt-6 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-2">

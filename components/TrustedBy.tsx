@@ -5,20 +5,21 @@ import { motion } from 'framer-motion';
 type Logo = {
   name: string;
   src: string;
-  text?: string;
-  textColor?: string;
+  heightPx?: number;
 };
+
+const DEFAULT_HEIGHT = 26;
 
 const logos: Logo[] = [
   { name: 'ServiceTitan', src: '/images/logos/servicetitan.png' },
   { name: 'Housecall Pro', src: '/images/logos/housecallpro.png' },
   { name: 'Jobber', src: '/images/logos/jobber.png' },
-  { name: 'ServiceNow', src: '/images/logos/servicenow.png' },
+  { name: 'ServiceNow', src: '/images/logos/servicenow.png', heightPx: 18 },
   { name: 'FieldEdge', src: '/images/logos/fieldedge.png' },
   { name: 'Service Fusion', src: '/images/logos/servicefusion.png' },
   { name: 'Google Calendar', src: '/images/logos/google-calendar.png' },
-  { name: 'Calendly', src: '/images/logos/calendly.png' },
-  { name: 'Salesforce', src: '/images/logos/salesforce.png', text: 'Salesforce', textColor: '#00A1E0' },
+  { name: 'Calendly', src: '/images/logos/calendly.png', heightPx: 18 },
+  { name: 'Salesforce', src: '/images/logos/salesforce.png' },
   { name: 'HubSpot', src: '/images/logos/hubspot.png' },
 ];
 
@@ -44,27 +45,24 @@ export const TrustedBy: React.FC = () => {
           }}
           className="flex items-center whitespace-nowrap gap-16 px-8"
         >
-          {[...logos, ...logos, ...logos].map((logo, index) => (
-            <div
-              key={`${logo.name}-${index}`}
-              className="flex items-center justify-center gap-2 flex-shrink-0 h-[26px]"
-            >
-              <img
-                src={logo.src}
-                alt={logo.name}
-                className="h-[26px] w-auto object-contain"
-                loading="lazy"
-              />
-              {logo.text && (
-                <span
-                  className="text-base font-bold whitespace-nowrap"
-                  style={{ color: logo.textColor }}
-                >
-                  {logo.text}
-                </span>
-              )}
-            </div>
-          ))}
+          {[...logos, ...logos, ...logos].map((logo, index) => {
+            const h = logo.heightPx ?? DEFAULT_HEIGHT;
+            return (
+              <div
+                key={`${logo.name}-${index}`}
+                className="flex items-center justify-center flex-shrink-0"
+                style={{ height: DEFAULT_HEIGHT }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="w-auto object-contain"
+                  style={{ height: h }}
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
         </motion.div>
 
         {/* Edge gradients */}

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { PlayIcon } from './Icons';
 import { CalendlyButton } from './CalendlyButton';
 
 export const Hero: React.FC = () => {
@@ -32,10 +31,6 @@ export const Hero: React.FC = () => {
                 className="w-full sm:w-auto bg-brand-blue hover:bg-blue-600 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg shadow-xl shadow-brand-blue/25 cursor-pointer"
                 text="Book a 15-Min Walkthrough"
               />
-              <a href="#demo-call" className="w-full sm:w-auto flex items-center justify-center space-x-2 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-gray-800/50 border border-gray-700 bg-black/20">
-                <PlayIcon className="w-6 h-6"/>
-                <span>Hear More Samples</span>
-              </a>
             </div>
             <p className="text-brand-blue font-bold tracking-wide uppercase text-sm">
               Starting at $497/mo — Cancel Anytime

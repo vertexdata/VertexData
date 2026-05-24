@@ -48,7 +48,7 @@ export const FinalCTA: React.FC = () => {
               <CalendlyButton 
                 className="btn-primary w-full sm:w-auto text-lg px-12 py-5 cursor-pointer"
               >
-                Hear a Live Demo Call
+                Book a Live Demo
                 <ArrowRight size={20} />
               </CalendlyButton>
               <a href="tel:+156733JEVUS" className="btn-secondary w-full sm:w-auto text-lg px-12 py-5">

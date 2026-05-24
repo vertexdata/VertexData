@@ -166,7 +166,7 @@ export const IndustryPage: React.FC<{ data: IndustryData }> = ({ data }) => {
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight text-center">
-                Hear how Jevus handles a real call
+                See how Jevus handles a real call
               </h2>
               <p className="text-gray-400 text-center mb-12">
                 Here's an example of Jevus AI answering a call for a {data.name.toLowerCase().replace(/s$/, '')} business.

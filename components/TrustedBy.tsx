@@ -47,17 +47,17 @@ export const TrustedBy: React.FC = () => {
           {[...logos, ...logos, ...logos].map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex items-center justify-center gap-2 flex-shrink-0 h-[34px]"
+              className="flex items-center justify-center gap-2 flex-shrink-0 h-[26px]"
             >
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-[34px] w-auto object-contain"
+                className="h-[26px] w-auto object-contain"
                 loading="lazy"
               />
               {logo.text && (
                 <span
-                  className="text-xl font-bold whitespace-nowrap"
+                  className="text-base font-bold whitespace-nowrap"
                   style={{ color: logo.textColor }}
                 >
                   {logo.text}

@@ -9,15 +9,27 @@
   
   --animate-subtle-pulse: subtle-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;
-  
+  --animate-hero-orbit-spin: hero-orbit-spin 60s linear infinite;
+  --animate-hero-orbit-counter: hero-orbit-counter 60s linear infinite;
+
   @keyframes subtle-pulse {
     0%, 100% { opacity: 0.4; transform: scale(1); }
     50% { opacity: 0.6; transform: scale(1.05); }
   }
-  
+
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
+  }
+
+  @keyframes hero-orbit-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes hero-orbit-counter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
   }
 }
 

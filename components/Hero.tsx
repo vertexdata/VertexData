@@ -1,27 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { CalendlyButton } from './CalendlyButton';
+import { HeroVisual } from './HeroVisual';
 
 const trustBadges = [
   'No Setup Fee',
   'Launch in Under 3 Days',
   'Cancel Anytime',
 ];
-
-const industries = [
-  'Plumbing',
-  'HVAC',
-  'Electrical',
-  'Pest Control',
-  'Landscaping',
-  'Roofing',
-  'Appliance Repair',
-  'Painters',
-  'Tree Service',
-];
-
-const ORBIT_DURATION = 60;
 
 export const Hero: React.FC = () => {
   return (
@@ -69,51 +55,8 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: receptionist illustration + orbiting industry pills */}
-          <div className="relative mx-auto w-full max-w-[480px] aspect-[4/5]">
-            {/* Soft glow behind image */}
-            <div className="absolute inset-[12%] bg-gradient-to-br from-brand-blue/25 to-brand-violet/25 blur-3xl rounded-full -z-10"></div>
-
-            {/* Receptionist illustration — fills container (aspect matches image) */}
-            <img
-              src="/images/hero-receptionist.png"
-              alt="AI receptionist for home service businesses"
-              className="absolute inset-0 w-full h-full object-contain"
-              loading="eager"
-            />
-
-            {/* Orbiting industry pills */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              animate={{ rotate: 360 }}
-              transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-            >
-              {industries.map((industry, i) => {
-                const angle = (360 / industries.length) * i - 90; // start at top
-                const rad = (angle * Math.PI) / 180;
-                const radius = 50;
-                const x = 50 + Math.cos(rad) * radius;
-                const y = 50 + Math.sin(rad) * radius;
-                return (
-                  <motion.div
-                    key={industry}
-                    className="absolute"
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-                  >
-                    <div className="bg-brand-dark/90 backdrop-blur-md border border-brand-blue/40 text-white text-[11px] md:text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap shadow-lg shadow-black/40">
-                      {industry}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
+          {/* Right: self-contained receptionist + orbit visual */}
+          <HeroVisual />
         </div>
       </div>
     </section>

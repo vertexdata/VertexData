@@ -21,6 +21,7 @@ export const Header: React.FC = () => {
     { name: 'Industries', href: '/industries/plumbers' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'Calculator', href: '/resources/missed-call-calculator' },
+    { name: 'FAQ', href: '/#faq' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -59,11 +60,11 @@ export const Header: React.FC = () => {
 
           <div className="flex items-center gap-6">
             <a 
-              href="tel:+156733JEVUS" 
+              href="tel:+15673353887" 
               className="hidden xl:flex items-center gap-2 text-sm font-bold text-white hover:text-brand-blue transition-colors"
             >
               <Phone size={16} className="text-brand-blue" />
-              +1 567 33 JEVUS
+              (567) 335-3887
             </a>
             
             <CalendlyButton 
@@ -103,11 +104,11 @@ export const Header: React.FC = () => {
               ))}
               <hr className="border-white/10" />
               <a 
-                href="tel:+156733JEVUS" 
+                href="tel:+15673353887" 
                 className="flex items-center gap-2 text-lg font-bold text-white"
               >
                 <Phone size={20} className="text-brand-blue" />
-                +1 567 33 JEVUS
+                (567) 335-3887
               </a>
               <CalendlyButton 
                 className="w-full py-4 bg-brand-blue text-white text-center font-bold rounded-xl cursor-pointer"

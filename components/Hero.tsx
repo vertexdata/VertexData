@@ -23,9 +23,6 @@ const industries = [
 
 const ORBIT_DURATION = 60;
 
-const fadeMask =
-  'radial-gradient(ellipse 78% 78% at 50% 50%, #000 60%, transparent 100%)';
-
 export const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
@@ -80,16 +77,12 @@ export const Hero: React.FC = () => {
             {/* Soft glow behind image */}
             <div className="absolute inset-[10%] bg-gradient-to-br from-brand-blue/25 to-brand-violet/25 blur-3xl rounded-full -z-10"></div>
 
-            {/* Receptionist image — edges faded with radial mask to blend into page bg */}
+            {/* Receptionist illustration with chroma-keyed transparent bg */}
             <div className="absolute inset-0 flex items-center justify-center">
               <img
                 src="/images/hero-receptionist.png"
                 alt="AI receptionist for home service businesses"
                 className="w-full h-full object-contain"
-                style={{
-                  maskImage: fadeMask,
-                  WebkitMaskImage: fadeMask,
-                }}
                 loading="eager"
               />
             </div>

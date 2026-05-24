@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { CalendlyButton } from './CalendlyButton';
 
@@ -7,6 +8,23 @@ const trustBadges = [
   'Launch in Under 3 Days',
   'Cancel Anytime',
 ];
+
+const industries = [
+  'Plumbing',
+  'HVAC',
+  'Electrical',
+  'Pest Control',
+  'Landscaping',
+  'Roofing',
+  'Appliance Repair',
+  'Painters',
+  'Tree Service',
+];
+
+const ORBIT_DURATION = 60;
+
+const fadeMask =
+  'radial-gradient(ellipse 78% 78% at 50% 50%, #000 60%, transparent 100%)';
 
 export const Hero: React.FC = () => {
   return (
@@ -57,15 +75,56 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: receptionist illustration */}
-          <div className="relative w-full max-w-[560px] mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-violet/20 blur-3xl -z-10"></div>
-            <img
-              src="/images/hero-receptionist.png"
-              alt="AI receptionist for home service businesses"
-              className="w-full h-auto"
-              loading="eager"
-            />
+          {/* Right: receptionist illustration + orbiting industry pills */}
+          <div className="relative w-full max-w-[560px] mx-auto aspect-square">
+            {/* Soft glow behind image */}
+            <div className="absolute inset-[10%] bg-gradient-to-br from-brand-blue/25 to-brand-violet/25 blur-3xl rounded-full -z-10"></div>
+
+            {/* Receptionist image — edges faded with radial mask to blend into page bg */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img
+                src="/images/hero-receptionist.png"
+                alt="AI receptionist for home service businesses"
+                className="w-full h-full object-contain"
+                style={{
+                  maskImage: fadeMask,
+                  WebkitMaskImage: fadeMask,
+                }}
+                loading="eager"
+              />
+            </div>
+
+            {/* Orbiting industry pills */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              animate={{ rotate: 360 }}
+              transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
+            >
+              {industries.map((industry, i) => {
+                const angle = (360 / industries.length) * i;
+                const rad = (angle * Math.PI) / 180;
+                const radius = 52;
+                const x = 50 + Math.cos(rad) * radius;
+                const y = 50 + Math.sin(rad) * radius;
+                return (
+                  <motion.div
+                    key={industry}
+                    className="absolute"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
+                  >
+                    <div className="bg-brand-dark/90 backdrop-blur-md border border-brand-blue/40 text-white text-[11px] md:text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap shadow-lg shadow-black/40">
+                      {industry}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </div>

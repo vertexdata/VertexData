@@ -168,8 +168,8 @@ function HomePage() {
         <BeforeAfter />
         <ROI />
         <Pricing />
-        <FinalCTA />
         <HomepageFaq />
+        <FinalCTA />
       </main>
       <Footer />
     </>

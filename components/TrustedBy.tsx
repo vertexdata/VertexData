@@ -2,7 +2,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const logos: { name: string; src: string }[] = [
+type Logo = {
+  name: string;
+  src: string;
+  text?: string;
+  textColor?: string;
+};
+
+const logos: Logo[] = [
   { name: 'ServiceTitan', src: '/images/logos/servicetitan.png' },
   { name: 'Housecall Pro', src: '/images/logos/housecallpro.png' },
   { name: 'Jobber', src: '/images/logos/jobber.png' },
@@ -11,7 +18,7 @@ const logos: { name: string; src: string }[] = [
   { name: 'Service Fusion', src: '/images/logos/servicefusion.png' },
   { name: 'Google Calendar', src: '/images/logos/google-calendar.png' },
   { name: 'Calendly', src: '/images/logos/calendly.png' },
-  { name: 'Salesforce', src: '/images/logos/salesforce.png' },
+  { name: 'Salesforce', src: '/images/logos/salesforce.png', text: 'Salesforce', textColor: '#00A1E0' },
   { name: 'HubSpot', src: '/images/logos/hubspot.png' },
 ];
 
@@ -40,16 +47,22 @@ export const TrustedBy: React.FC = () => {
           {[...logos, ...logos, ...logos].map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex items-center justify-center flex-shrink-0 h-10"
-              style={{ width: 140 }}
+              className="flex items-center justify-center gap-3 flex-shrink-0 h-10"
             >
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-10 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="h-10 w-auto object-contain"
                 loading="lazy"
               />
+              {logo.text && (
+                <span
+                  className="text-2xl font-bold whitespace-nowrap"
+                  style={{ color: logo.textColor }}
+                >
+                  {logo.text}
+                </span>
+              )}
             </div>
           ))}
         </motion.div>

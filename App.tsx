@@ -75,11 +75,12 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
+      // Defer so the target element is mounted before we measure it
+      requestAnimationFrame(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      });
+      return;
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);

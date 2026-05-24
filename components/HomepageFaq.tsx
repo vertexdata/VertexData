@@ -31,16 +31,18 @@ const faqs = [
 const FaqRow: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border-b border-white/5">
+    <div className="border-b border-white/10">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-4 flex items-center justify-between text-left focus:outline-none group"
+        className="w-full py-5 flex items-center justify-between text-left focus:outline-none gap-6"
       >
-        <span className="text-sm font-medium text-gray-300 group-hover:text-white pr-4">{question}</span>
-        {isOpen ? <Minus size={16} className="text-brand-blue flex-shrink-0" /> : <Plus size={16} className="text-gray-600 flex-shrink-0" />}
+        <span className="text-lg font-semibold text-white">{question}</span>
+        {isOpen
+          ? <Minus size={20} className="text-brand-blue flex-shrink-0" />
+          : <Plus size={20} className="text-gray-400 flex-shrink-0" />}
       </button>
       {isOpen && (
-        <p className="pb-4 text-sm text-gray-500 leading-relaxed">{answer}</p>
+        <p className="pb-6 pr-10 text-base text-gray-400 leading-relaxed">{answer}</p>
       )}
     </div>
   );
@@ -48,10 +50,12 @@ const FaqRow: React.FC<{ question: string; answer: string }> = ({ question, answ
 
 export const HomepageFaq: React.FC = () => {
   return (
-    <section className="py-16 bg-brand-dark border-t border-white/5">
+    <section className="py-24 bg-brand-dark border-t border-white/5">
       <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6 text-center">Frequently asked questions</h2>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-white text-center mb-12 tracking-tight">
+            Frequently Asked Questions
+          </h2>
           <div>
             {faqs.map((faq, i) => (
               <FaqRow key={i} question={faq.question} answer={faq.answer} />

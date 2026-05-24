@@ -23,10 +23,10 @@ export const ProductDemo: React.FC = () => {
             viewport={{ once: true }}
             className="heading-lg mb-6"
           >
-            Watch Your AI <span className="text-brand-blue">Receptionist Work.</span>
+            Hear It In <span className="text-brand-blue">Action.</span>
           </motion.h2>
           <p className="text-xl text-gray-400">
-            Experience the natural flow of a Jevus.ai conversation. No robotic prompts, just real results.
+            A real Jevus.ai conversation. No scripts. No robots.
           </p>
         </div>
 

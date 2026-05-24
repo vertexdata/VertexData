@@ -72,39 +72,29 @@ export const WhileYoureWorking: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right: Big visual stat */}
+          {/* Right: 2x2 stat grid */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col gap-6"
+            className="grid grid-cols-2 gap-6"
           >
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center">
-              <div className="text-7xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-violet mb-4 tracking-tighter">
-                $0
-              </div>
-              <p className="text-2xl text-white font-bold mb-2">revenue lost to missed calls</p>
-              <p className="text-gray-400">when Jevus answers every call for you</p>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-brand-blue/30 transition-colors">
+              <div className="text-6xl md:text-7xl font-black text-brand-blue mb-3 tracking-tighter">100%</div>
+              <div className="text-base md:text-lg text-gray-300 font-semibold">Calls answered</div>
             </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-black text-brand-blue mb-1">100%</div>
-                <div className="text-sm text-gray-400">Calls answered</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-black text-emerald-400 mb-1">0</div>
-                <div className="text-sm text-gray-400">Voicemails left</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-black text-brand-violet mb-1">&lt;1s</div>
-                <div className="text-sm text-gray-400">Pickup time</div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-black text-amber-400 mb-1">24/7</div>
-                <div className="text-sm text-gray-400">Coverage</div>
-              </div>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-emerald-400/30 transition-colors">
+              <div className="text-6xl md:text-7xl font-black text-emerald-400 mb-3 tracking-tighter">0</div>
+              <div className="text-base md:text-lg text-gray-300 font-semibold">Voicemails left</div>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-brand-violet/30 transition-colors">
+              <div className="text-6xl md:text-7xl font-black text-brand-violet mb-3 tracking-tighter">&lt;1s</div>
+              <div className="text-base md:text-lg text-gray-300 font-semibold">Pickup time</div>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-amber-400/30 transition-colors">
+              <div className="text-6xl md:text-7xl font-black text-amber-400 mb-3 tracking-tighter">24/7</div>
+              <div className="text-base md:text-lg text-gray-300 font-semibold">Coverage</div>
             </div>
           </motion.div>
         </div>

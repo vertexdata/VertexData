@@ -11,8 +11,6 @@ import { TrustedBy } from './components/TrustedBy';
 import { Problem } from './components/Problem';
 import { ProductDemo } from './components/ProductDemo';
 import { Capabilities } from './components/Capabilities';
-import { UseCases } from './components/UseCases';
-import { HowItWorks } from './components/HowItWorks';
 import { ROI } from './components/ROI';
 import { Pricing } from './components/Pricing';
 import { FinalCTA } from './components/FinalCTA';
@@ -161,8 +159,6 @@ function HomePage() {
         <ProductDemo />
         <Capabilities />
         <WhileYoureWorking />
-        <UseCases />
-        <HowItWorks />
         <BeforeAfter />
         <ROI />
         <Pricing />

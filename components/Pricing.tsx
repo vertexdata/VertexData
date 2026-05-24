@@ -150,7 +150,7 @@ export const Pricing: React.FC = () => {
             viewport={{ once: true }}
             className="heading-lg mb-6"
           >
-            The average plumber loses <span className="text-rose-500">$3,000-$5,000</span> a month in missed calls.
+            The average home service business loses <span className="text-rose-500">$3,000-$5,000</span> a month in missed calls.
           </motion.h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Stop donating jobs to your competitors. Jevus.ai pays for itself with just 1-2 saved jobs a month.

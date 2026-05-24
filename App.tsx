@@ -7,7 +7,6 @@ import { SEOHead } from './components/SEO';
 import { softwareApplicationSchema, faqSchema } from './components/JsonLd';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { DemoCall } from './components/DemoCall';
 import { TrustedBy } from './components/TrustedBy';
 import { Problem } from './components/Problem';
 import { ProductDemo } from './components/ProductDemo';
@@ -159,7 +158,6 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
-        <DemoCall />
         <TrustedBy />
         <Problem />
         <SpeedToLead />

@@ -45,7 +45,6 @@ export const features: FeatureData[] = [
       { title: 'Flat monthly pricing', description: 'No per-minute charges. No per-call fees. One predictable monthly cost.' },
     ],
     faqs: [
-      { question: 'Will callers know they\'re talking to AI?', answer: 'No. Jevus uses advanced voice synthesis with natural cadence, pauses, and background ambient noise. In testing, the vast majority of callers don\'t realize they\'re speaking with AI.' },
       { question: 'Can Jevus handle multiple calls at once?', answer: 'Yes. Unlike a human receptionist, Jevus handles 50+ simultaneous calls. During storm surges or peak season, every caller gets an instant response.' },
       { question: 'What languages does Jevus support?', answer: 'Jevus currently supports English with plans for Spanish support. The AI handles accents and diverse speaking styles naturally.' },
       { question: 'Can I customize what Jevus says?', answer: 'Yes. You control the greeting, company name, qualification questions, service area, and escalation rules. Jevus represents your brand exactly how you want.' },

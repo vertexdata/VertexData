@@ -1,9 +1,17 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MessageSquare, Calendar, CheckCircle2 } from 'lucide-react';
+import { Phone, MessageSquare, CheckCircle2, Sparkles } from 'lucide-react';
 
-const useCases = [
+type UseCase = {
+  industry: string;
+  scenario: string;
+  aiResponse: string;
+  outcome: string;
+  isCatchAll?: boolean;
+};
+
+const useCases: UseCase[] = [
   {
     industry: "Plumbers",
     scenario: "Emergency leak at 2 AM",
@@ -33,6 +41,13 @@ const useCases = [
     scenario: "Panel upgrade consultation",
     aiResponse: "I can schedule a free consultation with our master electrician for Friday. What time is best?",
     outcome: "Consultation booked and calendar invite sent."
+  },
+  {
+    industry: "Other Home Services",
+    scenario: "We work with any home service business — pest control, landscaping, roofing, appliance repair, and more.",
+    aiResponse: "If you take calls from homeowners, Jevus can answer them, qualify the lead, and book the job.",
+    outcome: "Tell us about your trade — we'll tailor Jevus to your workflow.",
+    isCatchAll: true
   }
 ];
 
@@ -67,9 +82,14 @@ export const UseCases: React.FC = () => {
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-black text-white">{useCase.industry}</h3>
-                  <div className="px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-widest">Case Study</div>
+                  {useCase.isCatchAll && (
+                    <div className="px-3 py-1 rounded-full bg-brand-violet/10 text-brand-violet text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+                      <Sparkles size={10} />
+                      And More
+                    </div>
+                  )}
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex gap-3">
                     <Phone size={16} className="text-gray-500 mt-1 flex-shrink-0" />

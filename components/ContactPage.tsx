@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, ArrowRight } from 'lucide-react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { SEOHead } from './SEO';
@@ -14,7 +14,7 @@ export const ContactPage: React.FC = () => {
     <div className="bg-brand-dark min-h-screen">
       <SEOHead
         title="Contact Jevus AI | Get in Touch | AI Voice Receptionist"
-        description="Contact Jevus AI for a free demo of our AI voice receptionist for home service businesses. Call, email, or fill out our form. Based in Largo, FL."
+        description="Contact Jevus AI for a free demo of our AI voice receptionist for home service businesses. Call, email, or fill out our form."
         canonical="/contact"
         keywords="contact Jevus AI, AI receptionist demo, Jevus AI phone number, Jevus AI support"
         schema={[
@@ -46,13 +46,13 @@ export const ContactPage: React.FC = () => {
                   <div>
                     <h2 className="text-2xl font-black text-white mb-6 tracking-tight">Get in touch</h2>
                     <div className="space-y-6">
-                      <a href="tel:+156733JEVUS" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                      <a href="tel:+15673353887" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
                         <div className="w-12 h-12 bg-brand-blue/10 border border-brand-blue/20 rounded-xl flex items-center justify-center text-brand-blue">
                           <Phone size={20} />
                         </div>
                         <div>
                           <div className="text-sm text-gray-500">Phone</div>
-                          <div className="font-bold">+1 567 33 JEVUS</div>
+                          <div className="font-bold">(567) 335-3887</div>
                         </div>
                       </a>
                       <a href="mailto:info@jevus.ai" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
@@ -64,15 +64,6 @@ export const ContactPage: React.FC = () => {
                           <div className="font-bold">info@jevus.ai</div>
                         </div>
                       </a>
-                      <div className="flex items-center gap-4 text-gray-300">
-                        <div className="w-12 h-12 bg-brand-blue/10 border border-brand-blue/20 rounded-xl flex items-center justify-center text-brand-blue">
-                          <MapPin size={20} />
-                        </div>
-                        <div>
-                          <div className="text-sm text-gray-500">Location</div>
-                          <div className="font-bold">Largo, FL</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
 

@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
              </span>
              <span className="text-brand-blue text-sm font-bold uppercase tracking-wider">Experience Jevus Live</span>
-             <a href="tel:+156733JEVUS" className="text-white hover:text-brand-blue transition-colors text-sm font-mono ml-2 font-bold">+1 567 33 JEVUS</a>
+             <a href="tel:+15673353887" className="text-white hover:text-brand-blue transition-colors text-sm font-mono ml-2 font-bold">(567) 335-3887</a>
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight mb-8">
@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
             </p>
           </div>
           <p className="mt-6 text-sm text-gray-500 font-medium">
-             Call <a href="tel:+156733JEVUS" className="text-gray-300 hover:text-brand-blue transition-colors underline decoration-brand-blue/30">+1 567 33 JEVUS</a> to talk to Jevus right now.
+             Call <a href="tel:+15673353887" className="text-gray-300 hover:text-brand-blue transition-colors underline decoration-brand-blue/30">(567) 335-3887</a> to talk to Jevus right now.
           </p>
         </div>
       </div>

@@ -29,7 +29,7 @@ const data = {
     { speaker: 'Jevus AI', text: "Thank you for calling Spark Electric, this is Jevus, your virtual assistant. How can I help you today?" },
     { speaker: 'Customer', text: "Hi, I smell something burning near one of my outlets and I'm a little worried. The outlet looks brown." },
     { speaker: 'Jevus AI', text: "That does sound concerning and could be a safety issue. I'd recommend not using that outlet and if possible, switching off the circuit breaker for that area. Let me get an electrician out to you quickly. Can I get your name and address?" },
-    { speaker: 'Customer', text: "Sure, it's Jennifer Walsh, 2234 Pine Street, St. Petersburg." },
+    { speaker: 'Customer', text: "Sure, it's Jennifer Walsh, 2234 Pine Street." },
     { speaker: 'Jevus AI', text: "Thank you, Jennifer. I've flagged this as an urgent electrical safety call. Our on-call electrician has been notified and will contact you within 15 minutes. Please keep that outlet off and avoid plugging anything into nearby outlets until it's been inspected." },
     { speaker: 'Customer', text: "That's great, thank you for the quick help!" },
   ],

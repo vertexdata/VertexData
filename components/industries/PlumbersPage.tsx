@@ -29,7 +29,7 @@ const data = {
     { speaker: 'Jevus AI', text: "Thank you for calling Mike's Plumbing, this is Jevus, your virtual assistant. How can I help you today?" },
     { speaker: 'Customer', text: "Hi, I have water leaking from my ceiling — I think a pipe burst upstairs. It's getting worse." },
     { speaker: 'Jevus AI', text: "I'm sorry to hear that — that does sound urgent. Let me make sure we get someone to you as quickly as possible. Can I get your name and address?" },
-    { speaker: 'Customer', text: "It's Sarah, 4521 Oak Drive, Tampa." },
+    { speaker: 'Customer', text: "It's Sarah, 4521 Oak Drive." },
     { speaker: 'Jevus AI', text: "Thank you, Sarah. I've flagged this as an emergency and notified our on-call technician. Someone will call you back within 15 minutes. In the meantime, if you can locate your main water shut-off valve, turning it off will help slow the leak." },
     { speaker: 'Customer', text: "Oh thank you so much, that's really helpful!" },
   ],

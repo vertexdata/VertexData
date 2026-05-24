@@ -51,14 +51,8 @@ export function localBusinessSchema() {
     name: 'Jevus AI',
     description: 'AI voice receptionist for home service businesses',
     url: 'https://jevus.ai',
-    telephone: '+1-567-33-JEVUS',
+    telephone: '+1-567-335-3887',
     email: 'info@jevus.ai',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Largo',
-      addressRegion: 'FL',
-      addressCountry: 'US',
-    },
     sameAs: [],
   };
 }

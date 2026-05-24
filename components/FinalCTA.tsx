@@ -51,7 +51,7 @@ export const FinalCTA: React.FC = () => {
                 Book a Live Demo
                 <ArrowRight size={20} />
               </CalendlyButton>
-              <a href="tel:+156733JEVUS" className="btn-secondary w-full sm:w-auto text-lg px-12 py-5">
+              <a href="tel:+15673353887" className="btn-secondary w-full sm:w-auto text-lg px-12 py-5">
                 <Phone size={20} />
                 Talk to Jevus Now
               </a>

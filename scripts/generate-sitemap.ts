@@ -2,7 +2,6 @@
 // Generates public/sitemap.xml from all page data
 
 import { writeFileSync } from 'fs';
-import { industries, floridaCities, getAllIndustryLocationPages } from '../components/seo/seoData';
 import { blogPosts } from '../components/blog/blogData';
 
 const BASE = 'https://jevus.ai';
@@ -22,13 +21,9 @@ urls.push(url('/about', 'monthly', '0.5'));
 urls.push(url('/integrations', 'monthly', '0.5'));
 
 // Industry hub pages
-for (const ind of industries) {
-  urls.push(url(`/industries/${ind.slug}`, 'monthly', '0.8'));
-}
-
-// Industry x Location pages
-for (const page of getAllIndustryLocationPages()) {
-  urls.push(url(page.path, 'monthly', '0.6'));
+const industrySlugs = ['plumbers', 'hvac', 'electricians', 'roofing', 'garage-door', 'pest-control', 'landscaping', 'general-contractors'];
+for (const slug of industrySlugs) {
+  urls.push(url(`/industries/${slug}`, 'monthly', '0.8'));
 }
 
 // Use case pages
@@ -57,15 +52,6 @@ for (const post of blogPosts) {
 
 // Resources
 urls.push(url('/resources/missed-call-calculator', 'monthly', '0.7'));
-
-// Location hub pages
-const locationSlugs = [
-  'tampa-bay', 'tampa', 'st-petersburg', 'clearwater', 'largo', 'seminole',
-  'treasure-island', 'pinellas-park', 'dunedin', 'palm-harbor', 'safety-harbor',
-];
-for (const loc of locationSlugs) {
-  urls.push(url(`/locations/${loc}`, 'monthly', '0.7'));
-}
 
 // Legal
 urls.push(url('/privacy', 'yearly', '0.3'));

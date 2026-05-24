@@ -6,7 +6,7 @@ const data = {
   competitorName: 'Newo.ai',
   headline: 'Jevus AI vs Newo.ai\nfor Home Service\nBusinesses',
   subheadline: "Newo.ai offers AI receptionists for general businesses. Jevus AI is purpose-built for contractors with trade-specific emergency handling, field service CRM integration, and home service call flows.",
-  verdict: "Newo.ai is a capable general-purpose AI receptionist, but it treats a plumbing emergency the same as a dental appointment inquiry. Jevus AI understands the stakes: a burst pipe at 2 AM, an AC failure during a Florida heat wave, a sparking outlet in a home with kids. Every feature — from emergency detection to ServiceTitan integration to trade-specific qualification — was built for the unique needs of home service contractors.",
+  verdict: "Newo.ai is a capable general-purpose AI receptionist, but it treats a plumbing emergency the same as a dental appointment inquiry. Jevus AI understands the stakes: a burst pipe at 2 AM, an AC failure during a summer heat wave, a sparking outlet in a home with kids. Every feature — from emergency detection to ServiceTitan integration to trade-specific qualification — was built for the unique needs of home service contractors.",
   rows: [
     { feature: 'Built for Home Services', jevus: true, competitor: false },
     { feature: 'Trade-Specific Emergency Detection', jevus: true, competitor: false },

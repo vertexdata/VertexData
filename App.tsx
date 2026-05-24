@@ -15,18 +15,16 @@ import { Solution } from './components/Solution';
 import { UseCases } from './components/UseCases';
 import { HowItWorks } from './components/HowItWorks';
 import { ROI } from './components/ROI';
-import { SocialProof } from './components/SocialProof';
 import { Pricing } from './components/Pricing';
 import { FinalCTA } from './components/FinalCTA';
 import { SpeedToLead } from './components/SpeedToLead';
 import { WhileYoureWorking } from './components/WhileYoureWorking';
 import { BeforeAfter } from './components/BeforeAfter';
+import { HomepageFaq } from './components/HomepageFaq';
 import { Footer } from './components/Footer';
 import { blogPosts } from './components/blog/blogData';
 import { FeaturePage } from './components/features/FeaturePage';
 import { features as featureData } from './components/features/featureData';
-import { getAllIndustryLocationPages } from './components/seo/seoData';
-import { IndustryLocationPage } from './components/seo/IndustryLocationPage';
 
 // Lazy load all non-homepage pages for code splitting
 const SetupWizard = lazy(() => import('./components/SetupWizard').then(m => ({ default: m.SetupWizard })));
@@ -65,16 +63,6 @@ const VsGoodcallPage = lazy(() => import('./components/vs/VsGoodcallPage').then(
 const VsRubyPage = lazy(() => import('./components/vs/VsRubyPage').then(m => ({ default: m.VsRubyPage })));
 const VsNewoPage = lazy(() => import('./components/vs/VsNewoPage').then(m => ({ default: m.VsNewoPage })));
 const VsDialzaraPage = lazy(() => import('./components/vs/VsDialzaraPage').then(m => ({ default: m.VsDialzaraPage })));
-
-// Location pages
-import {
-  TampaBayPage, TampaPage, StPetersburgPage, ClearwaterPage, LargoPage,
-  SeminolePage, TreasureIslandPage, PinellasParkPage, DunedinPage,
-  PalmHarborPage, SafetyHarborPage,
-} from './components/locations';
-
-// Pre-compute all programmatic industry x location pages
-const industryLocationPages = getAllIndustryLocationPages();
 
 // Loading spinner for lazy routes
 const PageLoader = () => (
@@ -169,9 +157,9 @@ function HomePage() {
         <HowItWorks />
         <BeforeAfter />
         <ROI />
-        <SocialProof />
         <Pricing />
         <FinalCTA />
+        <HomepageFaq />
       </main>
       <Footer />
     </>
@@ -214,11 +202,6 @@ function App() {
             <Route path="/industries/landscaping" element={<LandscapingPage />} />
             <Route path="/industries/general-contractors" element={<GeneralContractorsPage />} />
 
-            {/* Programmatic Industry x Location pages (336 pages) */}
-            {industryLocationPages.map(({ industry, city, slug, path }) => (
-              <Route key={slug} path={path} element={<IndustryLocationPage industry={industry} city={city} />} />
-            ))}
-
             {/* Use case pages */}
             <Route path="/use-cases/after-hours-answering" element={<AfterHoursPage />} />
             <Route path="/use-cases/missed-call-recovery" element={<MissedCallRecoveryPage />} />
@@ -240,19 +223,6 @@ function App() {
             {blogPosts.map(post => (
               <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogArticle post={post} />} />
             ))}
-
-            {/* Location hub pages */}
-            <Route path="/locations/tampa-bay" element={<TampaBayPage />} />
-            <Route path="/locations/tampa" element={<TampaPage />} />
-            <Route path="/locations/st-petersburg" element={<StPetersburgPage />} />
-            <Route path="/locations/clearwater" element={<ClearwaterPage />} />
-            <Route path="/locations/largo" element={<LargoPage />} />
-            <Route path="/locations/seminole" element={<SeminolePage />} />
-            <Route path="/locations/treasure-island" element={<TreasureIslandPage />} />
-            <Route path="/locations/pinellas-park" element={<PinellasParkPage />} />
-            <Route path="/locations/dunedin" element={<DunedinPage />} />
-            <Route path="/locations/palm-harbor" element={<PalmHarborPage />} />
-            <Route path="/locations/safety-harbor" element={<SafetyHarborPage />} />
 
             {/* Static / legal pages */}
             <Route path="/about" element={<Suspense fallback={<PageLoader />}><LazyAbout /></Suspense>} />

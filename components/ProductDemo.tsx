@@ -6,7 +6,7 @@ import { CalendlyButton } from './CalendlyButton';
 const transcript = [
   { role: 'customer', text: "Hey, my AC just stopped working and it's 90 degrees in here. Do you have anyone who can come out today?", icon: User },
   { role: 'ai', text: "I'm sorry to hear that! I know how uncomfortable that can be. I can certainly help you with that. Are you a new or returning customer?", icon: Bot },
-  { role: 'customer', text: "I'm a new customer. I live in North Scottsdale.", icon: User },
+  { role: 'customer', text: "I'm a new customer.", icon: User },
   { role: 'ai', text: "Got it. We have an emergency technician available this afternoon between 2 PM and 4 PM. Would you like me to book that diagnostic visit for you?", icon: Bot },
   { role: 'customer', text: "Yes, please. That would be great.", icon: User },
   { role: 'ai', text: "Perfect. I've scheduled your appointment for today. You'll receive a confirmation text in just a second with the details and your technician's name.", icon: Bot },

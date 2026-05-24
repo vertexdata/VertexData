@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
@@ -34,12 +34,12 @@ const FaqRow: React.FC<{ question: string; answer: string }> = ({ question, answ
     <div className="border-b border-white/10">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-5 flex items-center justify-between text-left focus:outline-none gap-6"
+        className="w-full py-6 flex items-center justify-between text-left focus:outline-none gap-6 hover:bg-white/[0.02] transition-colors px-4 -mx-4 rounded-lg"
       >
         <span className="text-lg font-semibold text-white">{question}</span>
         {isOpen
-          ? <Minus size={20} className="text-brand-blue flex-shrink-0" />
-          : <Plus size={20} className="text-gray-400 flex-shrink-0" />}
+          ? <Minus size={22} className="text-brand-blue flex-shrink-0" />
+          : <Plus size={22} className="text-gray-400 flex-shrink-0" />}
       </button>
       {isOpen && (
         <p className="pb-6 pr-10 text-base text-gray-400 leading-relaxed">{answer}</p>
@@ -50,12 +50,18 @@ const FaqRow: React.FC<{ question: string; answer: string }> = ({ question, answ
 
 export const HomepageFaq: React.FC = () => {
   return (
-    <section className="py-24 bg-brand-dark border-t border-white/5">
+    <section id="faq" className="py-24 bg-black/30 border-t border-white/10">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-white text-center mb-12 tracking-tight">
-            Frequently Asked Questions
-          </h2>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-brand-blue/10 border border-brand-blue/20 rounded-full px-4 py-1.5 mb-6">
+              <HelpCircle size={14} className="text-brand-blue" />
+              <span className="text-brand-blue text-xs font-bold uppercase tracking-widest">FAQ</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+              Frequently Asked Questions
+            </h2>
+          </div>
           <div>
             {faqs.map((faq, i) => (
               <FaqRow key={i} question={faq.question} answer={faq.answer} />

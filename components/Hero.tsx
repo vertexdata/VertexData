@@ -70,19 +70,17 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right: receptionist illustration + orbiting industry pills */}
-          <div className="relative w-full max-w-[560px] mx-auto aspect-square">
+          <div className="relative mx-auto w-full max-w-[480px] aspect-[4/5]">
             {/* Soft glow behind image */}
-            <div className="absolute inset-[10%] bg-gradient-to-br from-brand-blue/25 to-brand-violet/25 blur-3xl rounded-full -z-10"></div>
+            <div className="absolute inset-[12%] bg-gradient-to-br from-brand-blue/25 to-brand-violet/25 blur-3xl rounded-full -z-10"></div>
 
-            {/* Receptionist illustration with chroma-keyed transparent bg */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                src="/images/hero-receptionist.png"
-                alt="AI receptionist for home service businesses"
-                className="w-full h-full object-contain"
-                loading="eager"
-              />
-            </div>
+            {/* Receptionist illustration — fills container (aspect matches image) */}
+            <img
+              src="/images/hero-receptionist.png"
+              alt="AI receptionist for home service businesses"
+              className="absolute inset-0 w-full h-full object-contain"
+              loading="eager"
+            />
 
             {/* Orbiting industry pills */}
             <motion.div
@@ -91,9 +89,9 @@ export const Hero: React.FC = () => {
               transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
             >
               {industries.map((industry, i) => {
-                const angle = (360 / industries.length) * i;
+                const angle = (360 / industries.length) * i - 90; // start at top
                 const rad = (angle * Math.PI) / 180;
-                const radius = 52;
+                const radius = 50;
                 const x = 50 + Math.cos(rad) * radius;
                 const y = 50 + Math.sin(rad) * radius;
                 return (

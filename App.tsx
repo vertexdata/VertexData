@@ -11,7 +11,6 @@ import { TrustedBy } from './components/TrustedBy';
 import { Problem } from './components/Problem';
 import { ProductDemo } from './components/ProductDemo';
 import { Capabilities } from './components/Capabilities';
-import { Solution } from './components/Solution';
 import { UseCases } from './components/UseCases';
 import { HowItWorks } from './components/HowItWorks';
 import { ROI } from './components/ROI';
@@ -162,7 +161,6 @@ function HomePage() {
         <ProductDemo />
         <Capabilities />
         <WhileYoureWorking />
-        <Solution />
         <UseCases />
         <HowItWorks />
         <BeforeAfter />

@@ -17,7 +17,7 @@ export const ROI: React.FC = () => {
             One Job Covers <span className="text-brand-blue">The Cost.</span>
           </motion.h2>
           <p className="text-xl text-gray-400">
-            Average plumbing job: <span className="text-white font-bold">$350</span>. Missing 3 calls a week = <span className="text-rose-500 font-bold">$54,600/year</span> walking out the door. Jevus costs less than one of those jobs per month.
+            The average home service job pays for an entire month of Jevus. Stop losing jobs to voicemail — Jevus pays for itself with just 1-2 recovered calls a month.
           </p>
         </div>
 

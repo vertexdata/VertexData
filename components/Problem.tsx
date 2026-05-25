@@ -31,12 +31,11 @@ export const Problem: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-xl"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-white mb-8 leading-[1.1] tracking-tight">
-              Every Missed Call Is a<br />
-              Job You Already Lost
+            <h2 className="text-[clamp(1.875rem,7vw,3.5rem)] font-black text-white mb-8 leading-[1.1] tracking-tight">
+              Every Missed Call Is a Job You Already Lost
             </h2>
-            
-            <div className="space-y-6 text-xl text-gray-300 font-medium leading-relaxed">
+
+            <div className="space-y-6 text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
               <p>
                 When you're on a job and your phone rings, it goes straight to your competitor.
               </p>
@@ -46,13 +45,13 @@ export const Problem: React.FC = () => {
             </div>
 
             <div className="mt-12 pt-8">
-              <p className="text-2xl text-gray-300 font-medium mb-2">
+              <p className="text-xl sm:text-2xl text-gray-300 font-medium mb-2">
                 The average trades business loses
               </p>
-              <p className="text-4xl md:text-5xl lg:text-[52px] font-black text-[#FF4444] drop-shadow-[0_0_20px_rgba(255,68,68,0.4)] mb-3 tracking-tight">
+              <p className="text-[clamp(1.875rem,6vw,3.25rem)] font-black text-[#FF4444] drop-shadow-[0_0_20px_rgba(255,68,68,0.4)] mb-3 tracking-tight break-words">
                 $5,000–$9,500 every month
               </p>
-              <p className="text-2xl text-gray-300 font-medium">
+              <p className="text-xl sm:text-2xl text-gray-300 font-medium">
                 in missed calls.
               </p>
             </div>

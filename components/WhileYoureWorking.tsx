@@ -31,11 +31,11 @@ export const WhileYoureWorking: React.FC = () => {
               <span>A DAY WITH JEVUS</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-white mb-6 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight">
               You Keep Working.<br />Jevus Keeps <span className="text-brand-violet">Booking.</span>
             </h2>
 
-            <p className="text-xl text-gray-400 mb-12 max-w-lg">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-lg">
               Here's what happens in 20 minutes while you're elbow-deep in a job.
             </p>
 
@@ -78,23 +78,23 @@ export const WhileYoureWorking: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-2 gap-3 sm:gap-5 lg:gap-6"
           >
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-brand-blue/30 transition-colors">
-              <div className="text-6xl md:text-7xl font-black text-brand-blue mb-3 tracking-tighter">100%</div>
-              <div className="text-base md:text-lg text-gray-300 font-semibold">Calls answered</div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-10 text-center hover:border-brand-blue/30 transition-colors overflow-hidden">
+              <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-blue mb-2 sm:mb-3 tracking-tighter break-words leading-none">100%</div>
+              <div className="text-xs sm:text-base md:text-lg text-gray-300 font-semibold">Calls answered</div>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-emerald-400/30 transition-colors">
-              <div className="text-6xl md:text-7xl font-black text-emerald-400 mb-3 tracking-tighter">0</div>
-              <div className="text-base md:text-lg text-gray-300 font-semibold">Voicemails left</div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-10 text-center hover:border-emerald-400/30 transition-colors overflow-hidden">
+              <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-emerald-400 mb-2 sm:mb-3 tracking-tighter break-words leading-none">0</div>
+              <div className="text-xs sm:text-base md:text-lg text-gray-300 font-semibold">Voicemails left</div>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-brand-violet/30 transition-colors">
-              <div className="text-6xl md:text-7xl font-black text-brand-violet mb-3 tracking-tighter">&lt;1s</div>
-              <div className="text-base md:text-lg text-gray-300 font-semibold">Pickup time</div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-10 text-center hover:border-brand-violet/30 transition-colors overflow-hidden">
+              <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-violet mb-2 sm:mb-3 tracking-tighter break-words leading-none">&lt;1s</div>
+              <div className="text-xs sm:text-base md:text-lg text-gray-300 font-semibold">Pickup time</div>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10 text-center hover:border-amber-400/30 transition-colors">
-              <div className="text-6xl md:text-7xl font-black text-amber-400 mb-3 tracking-tighter">24/7</div>
-              <div className="text-base md:text-lg text-gray-300 font-semibold">Coverage</div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-10 text-center hover:border-amber-400/30 transition-colors overflow-hidden">
+              <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-amber-400 mb-2 sm:mb-3 tracking-tighter break-words leading-none">24/7</div>
+              <div className="text-xs sm:text-base md:text-lg text-gray-300 font-semibold">Coverage</div>
             </div>
           </motion.div>
         </div>

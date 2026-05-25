@@ -18,23 +18,23 @@ export const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
           {/* Left: copy */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 rounded-full px-4 py-1.5 mb-8 animate-fade-in">
-              <span className="relative flex h-2 w-2">
+            <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 bg-brand-blue/10 border border-brand-blue/20 rounded-full px-3 sm:px-4 py-1.5 mb-8 animate-fade-in max-w-full">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
               </span>
-              <span className="text-brand-blue text-sm font-bold uppercase tracking-wider">Experience Jevus Live</span>
-              <a href="tel:+15673353887" className="text-white hover:text-brand-blue transition-colors text-sm font-mono ml-2 font-bold">(567) 335-3887</a>
+              <span className="text-brand-blue text-xs sm:text-sm font-bold uppercase tracking-wider">Experience Jevus Live</span>
+              <a href="tel:+15673353887" className="text-white hover:text-brand-blue transition-colors text-xs sm:text-sm font-mono font-bold">(567) 335-3887</a>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[1.05] mb-6">
+            <h1 className="text-[clamp(1.875rem,7vw,3.75rem)] font-black text-white tracking-tight leading-[1.08] mb-6 break-words">
               Your 24/7 AI Receptionist for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-violet">
                 Home Service Businesses
               </span>
             </h1>
 
-            <p className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-gray-300 leading-relaxed mb-10">
+            <p className="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8 sm:mb-10">
               AI that answers calls, qualifies leads, and books jobs. 24/7. No staff required.
             </p>
 

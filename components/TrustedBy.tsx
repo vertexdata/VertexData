@@ -28,7 +28,7 @@ export const TrustedBy: React.FC = () => {
     <section className="py-20 border-y border-white/5 bg-white/[0.02]">
       <div className="container mx-auto px-6 mb-12">
         <h2 className="text-center text-xs font-bold text-gray-500 tracking-[0.3em] uppercase">
-          Integrates with your existing trade tools
+          Integrates with your existing tech stack
         </h2>
       </div>
 

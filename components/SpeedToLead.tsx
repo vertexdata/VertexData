@@ -24,25 +24,25 @@ export const SpeedToLead: React.FC = () => {
               <span>SPEED TO LEAD</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-white mb-8 leading-[1.1] tracking-tight">
-              The First Contractor<br />to Answer <span className="text-emerald-400">Wins.</span>
+            <h2 className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-8 leading-[1.1] tracking-tight">
+              The First Contractor to Answer <span className="text-emerald-400">Wins.</span>
             </h2>
 
-            <p className="text-xl text-gray-300 font-medium leading-relaxed mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed mb-6">
               It's not about being the best. It's not about being the cheapest.
             </p>
-            <p className="text-xl text-gray-300 font-medium leading-relaxed mb-12">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed mb-12">
               It's about being <span className="text-white font-bold">first.</span>
             </p>
 
-            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-8">
-              <div className="text-6xl md:text-7xl lg:text-8xl font-black text-emerald-400 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] mb-3 tracking-tight">
+            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6 sm:p-8">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-emerald-400 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)] mb-3 tracking-tight">
                 78%
               </div>
-              <p className="text-2xl text-white font-bold mb-2">
+              <p className="text-lg sm:text-xl md:text-2xl text-white font-bold mb-2">
                 of customers hire the first contractor who responds.
               </p>
-              <p className="text-gray-400">
+              <p className="text-sm sm:text-base text-gray-400">
                 Not the best reviewed. Not the cheapest quote. The one who picked up the phone.
               </p>
             </div>

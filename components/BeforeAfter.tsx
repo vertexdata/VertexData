@@ -16,12 +16,12 @@ export const BeforeAfter: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-[56px] font-black text-white mb-6 leading-[1.1] tracking-tight"
+            className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight"
           >
-            Before Jevus vs. <span className="text-brand-blue">After Jevus</span>
+            Before Jevus AI vs. <span className="text-brand-blue">After Jevus AI</span>
           </motion.h2>
-          <p className="text-xl text-gray-400">
-            The difference one AI receptionist makes for a 3-truck plumbing company.
+          <p className="text-base sm:text-lg md:text-xl text-gray-400">
+            The difference one AI receptionist makes for a growing home service business.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export const BeforeAfter: React.FC = () => {
             viewport={{ once: true }}
             className="bg-rose-500/5 border border-rose-500/20 rounded-3xl p-8 md:p-10"
           >
-            <div className="text-rose-400 text-sm font-bold uppercase tracking-widest mb-6">Before Jevus</div>
+            <div className="text-rose-400 text-sm font-bold uppercase tracking-widest mb-6">Before Jevus AI</div>
             <div className="space-y-5">
               {[
                 { metric: 'Calls answered', value: '73%', note: '27% go to voicemail' },
@@ -65,7 +65,7 @@ export const BeforeAfter: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="bg-emerald-500/5 border border-emerald-500/20 rounded-3xl p-8 md:p-10"
           >
-            <div className="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-6">After Jevus</div>
+            <div className="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-6">After Jevus AI</div>
             <div className="space-y-5">
               {[
                 { metric: 'Calls answered', value: '100%', note: 'Every single call, every time' },

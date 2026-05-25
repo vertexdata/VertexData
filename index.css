@@ -69,6 +69,7 @@
   }
   
   .heading-lg {
-    @apply text-4xl md:text-6xl font-bold tracking-tight text-white;
+    font-size: clamp(1.875rem, 5.5vw, 3.75rem);
+    @apply font-bold tracking-tight text-white;
   }
 }

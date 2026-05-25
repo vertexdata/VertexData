@@ -23,7 +23,7 @@ export const ProductDemo: React.FC = () => {
             viewport={{ once: true }}
             className="heading-lg mb-6"
           >
-            Hear It In <span className="text-brand-blue">Action.</span>
+            See It In <span className="text-brand-blue">Action.</span>
           </motion.h2>
           <p className="text-xl text-gray-400">
             A real Jevus.ai conversation. No scripts. No robots.

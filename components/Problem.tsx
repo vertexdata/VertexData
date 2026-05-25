@@ -68,13 +68,13 @@ export const Problem: React.FC = () => {
               {/* Left-edge gradient fade — blends image into the section bg */}
               <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#020617] via-[#020617]/60 to-transparent pointer-events-none"></div>
 
-              {/* Missed Call Notification Card — positioned over the phone in the lower-center area */}
+              {/* Missed Call Notification Card — positioned in the upper-right empty space */}
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                initial={{ opacity: 0, y: -16, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.6, type: 'spring', bounce: 0.35 }}
-                className="absolute left-1/2 -translate-x-1/2 bottom-[18%] w-[78%] max-w-[320px] bg-black/70 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+                className="absolute top-[14%] right-[6%] w-[58%] max-w-[260px] bg-black/70 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="relative shrink-0">

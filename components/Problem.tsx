@@ -5,7 +5,7 @@ import { PhoneMissed } from 'lucide-react';
 
 export const Problem: React.FC = () => {
   return (
-    <section id="problem" className="py-24 relative overflow-hidden bg-[#020617]">
+    <section id="problem" className="py-20 lg:py-24 relative overflow-hidden bg-[#020617]">
       {/* Background Network Pattern & Glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-brand-blue/10 blur-[120px] rounded-full"></div>
@@ -31,11 +31,11 @@ export const Problem: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-xl"
           >
-            <h2 className="text-[clamp(1.875rem,7vw,3.5rem)] font-black text-white mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.875rem,6vw,3.25rem)] font-black text-white mb-5 leading-[1.1] tracking-tight">
               Every Missed Call Is a Job You Already Lost
             </h2>
 
-            <div className="space-y-6 text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+            <div className="space-y-3 text-base sm:text-lg text-gray-300 leading-relaxed">
               <p>
                 When you're on a job and your phone rings, it goes straight to your competitor.
               </p>
@@ -44,15 +44,15 @@ export const Problem: React.FC = () => {
               </p>
             </div>
 
-            <div className="mt-12 pt-8">
-              <p className="text-xl sm:text-2xl text-gray-300 font-medium mb-2">
-                The average trades business loses
-              </p>
-              <p className="text-[clamp(1.875rem,6vw,3.25rem)] font-black text-[#FF4444] drop-shadow-[0_0_20px_rgba(255,68,68,0.4)] mb-3 tracking-tight break-words">
-                $5,000–$9,500 every month
-              </p>
-              <p className="text-xl sm:text-2xl text-gray-300 font-medium">
-                in missed calls.
+            <div className="mt-8 border-l-2 border-rose-500/40 pl-5">
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                Average monthly loss
+              </div>
+              <div className="text-[clamp(2rem,5vw,2.75rem)] font-black text-rose-500 tracking-tight leading-none mb-2">
+                $5,000–$9,500
+              </div>
+              <p className="text-sm sm:text-base text-gray-400">
+                in missed calls for the average trades business
               </p>
             </div>
           </motion.div>

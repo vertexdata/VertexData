@@ -58,6 +58,8 @@ export const Problem: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative mt-12 lg:mt-0"
           >
+            {/* Image container — position: relative + overflow: hidden so the
+                notification card can never escape its boundaries */}
             <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl aspect-square bg-[#020617]">
               <img
                 src="/images/plumber-missed-call.png"
@@ -68,24 +70,56 @@ export const Problem: React.FC = () => {
               {/* Left-edge gradient fade — blends image into the section bg */}
               <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#020617] via-[#020617]/60 to-transparent pointer-events-none"></div>
 
-              {/* Missed Call Notification Card
-                  Mobile: centered along the bottom margin below the plumber, smaller
-                  sm+: tucked into the upper-right empty space beside the plumber */}
+              {/* Mobile notification — bottom 16px, centered via left:50% + framer-motion x:-50%.
+                  Using framer-motion's x value so the translateX composes with its animation
+                  transform (otherwise framer-motion would overwrite an inline transform). */}
               <motion.div
-                initial={{ opacity: 0, y: 12, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5, type: 'spring', bounce: 0.3 }}
-                /* Mobile: bottom-center, 16px from bottom, max 80% of image width
-                   Desktop (sm+): bottom-right corner, 20px from bottom and right edges
-                   Both positions stay strictly inside the relative image container. */
-                className="absolute bottom-4 left-0 right-0 mx-auto w-[80%] max-w-[260px] p-3
-                           sm:bottom-5 sm:right-5 sm:left-auto sm:mx-0 sm:w-auto sm:max-w-[260px] sm:p-4
-                           bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+                initial={{ opacity: 0, y: 12, x: '-50%' }}
+                animate={{ opacity: 1, y: 0, x: '-50%' }}
+                transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
+                className="md:hidden bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] p-2.5"
+                style={{
+                  position: 'absolute',
+                  bottom: '16px',
+                  left: '50%',
+                  maxWidth: '70%',
+                }}
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="relative shrink-0">
+                    <span className="absolute inset-0 rounded-full bg-red-500/60 animate-ping"></span>
+                    <div className="relative w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(239,68,68,0.7)]">
+                      <PhoneMissed size={15} strokeWidth={2.5} />
+                    </div>
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-white font-bold text-[13px] leading-tight">Missed Call</h4>
+                    <p className="text-gray-300 text-[10px] mt-0.5 leading-tight">Potential Customer</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="w-full py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold text-xs transition-colors shadow shadow-red-500/30"
+                >
+                  Call back now
+                </button>
+              </motion.div>
+
+              {/* Desktop notification — bottom-right corner, 24px from bottom and right */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
+                className="hidden md:block bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] p-4"
+                style={{
+                  position: 'absolute',
+                  bottom: '24px',
+                  right: '24px',
+                  maxWidth: '280px',
+                }}
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="relative shrink-0">
-                    {/* Pulsing red glow ring */}
                     <span className="absolute inset-0 rounded-full bg-red-500/60 animate-ping"></span>
                     <div className="relative w-11 h-11 rounded-full bg-red-500 flex items-center justify-center text-white shadow-[0_0_24px_rgba(239,68,68,0.7)]">
                       <PhoneMissed size={20} strokeWidth={2.5} />

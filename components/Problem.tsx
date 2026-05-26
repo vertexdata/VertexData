@@ -22,9 +22,9 @@ export const Problem: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl"
+            className="max-w-xl min-w-0"
           >
-            <h2 className="text-[clamp(1.625rem,6vw,3.25rem)] font-black text-white mb-5 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.625rem,6vw,3.25rem)] font-black text-white mb-5 leading-[1.1] tracking-tight break-words">
               Every Missed Call Is a Job You Already Lost
             </h2>
 
@@ -72,14 +72,15 @@ export const Problem: React.FC = () => {
                   Mobile: centered along the bottom margin below the plumber, smaller
                   sm+: tucked into the upper-right empty space beside the plumber */}
               <motion.div
-                initial={{ opacity: 0, y: -16, scale: 0.9 }}
+                initial={{ opacity: 0, y: 12, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6, type: 'spring', bounce: 0.35 }}
-                /* Center via margin auto on mobile (avoids touching transform, which
-                   Framer Motion is animating). Anchor to top-right at sm+. */
-                className="absolute bottom-3 left-0 right-0 mx-auto w-[78%] max-w-[220px] p-3
-                           sm:left-auto sm:right-[6%] sm:bottom-auto sm:top-[14%] sm:mx-0 sm:w-[58%] sm:max-w-[260px] sm:p-4
+                transition={{ duration: 0.5, delay: 0.5, type: 'spring', bounce: 0.3 }}
+                /* Mobile: bottom-center, 16px from bottom, max 80% of image width
+                   Desktop (sm+): bottom-right corner, 20px from bottom and right edges
+                   Both positions stay strictly inside the relative image container. */
+                className="absolute bottom-4 left-0 right-0 mx-auto w-[80%] max-w-[260px] p-3
+                           sm:bottom-5 sm:right-5 sm:left-auto sm:mx-0 sm:w-auto sm:max-w-[260px] sm:p-4
                            bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
               >
                 <div className="flex items-center gap-3 mb-3">

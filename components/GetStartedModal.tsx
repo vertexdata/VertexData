@@ -48,6 +48,20 @@ const initialData: FormData = {
 const inputClass =
   'w-full bg-white/5 border border-white/10 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 rounded-xl px-4 py-3 text-white placeholder-gray-500 transition-colors outline-none appearance-none';
 
+const inputErrorClass =
+  'w-full bg-white/5 border border-rose-500/60 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-500 transition-colors outline-none appearance-none';
+
+/** Strip non-digits and format as (XXX) XXX-XXXX progressively */
+function formatPhone(input: string): string {
+  const digits = input.replace(/\D/g, '').slice(0, 10);
+  if (digits.length === 0) return '';
+  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
+const isPhoneValid = (phone: string) => phone.replace(/\D/g, '').length === 10;
+
 type Props = { open: boolean; onClose: () => void };
 
 export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
@@ -56,6 +70,8 @@ export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Show phone error only after the user has attempted to advance with an invalid number
+  const [showPhoneError, setShowPhoneError] = useState(false);
 
   // Lock body scroll while open
   useEffect(() => {
@@ -86,6 +102,7 @@ export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
       setSubmitting(false);
       setDone(false);
       setError(null);
+      setShowPhoneError(false);
     }, 300);
   };
 
@@ -94,15 +111,25 @@ export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim());
 
+  const phoneValid = isPhoneValid(data.phone);
+
   const canProceed =
     step === 1
       ? emailValid
       : step === 2
-      ? !!(data.firstName && data.lastName && data.company && data.phone && data.locations)
+      ? !!(data.firstName && data.lastName && data.company && phoneValid && data.locations)
       : !!data.platform &&
         (data.platform !== 'Other' || !!data.platformOther.trim()) &&
         !!data.source &&
         (data.source !== 'Other' || !!data.sourceOther.trim());
+
+  const handleStep2Continue = () => {
+    if (!phoneValid) {
+      setShowPhoneError(true);
+      return;
+    }
+    setStep(3);
+  };
 
   const submit = async () => {
     setSubmitting(true);
@@ -241,11 +268,30 @@ export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
                         <Field label="Phone Number" required>
                           <input
                             type="tel"
+                            inputMode="tel"
+                            autoComplete="tel-national"
                             value={data.phone}
-                            onChange={(e) => update('phone', e.target.value)}
+                            onChange={(e) => {
+                              update('phone', formatPhone(e.target.value));
+                              // Clear the error as soon as they reach 10 digits
+                              if (showPhoneError && isPhoneValid(formatPhone(e.target.value))) {
+                                setShowPhoneError(false);
+                              }
+                            }}
+                            onBlur={() => {
+                              if (data.phone && !phoneValid) setShowPhoneError(true);
+                            }}
                             placeholder="(555) 123-4567"
-                            className={inputClass}
+                            maxLength={14}
+                            className={showPhoneError ? inputErrorClass : inputClass}
+                            aria-invalid={showPhoneError}
+                            aria-describedby={showPhoneError ? 'phone-error' : undefined}
                           />
+                          {showPhoneError && (
+                            <p id="phone-error" className="mt-2 text-sm text-rose-400">
+                              Please enter a valid 10-digit phone number
+                            </p>
+                          )}
                         </Field>
                         <Field label="Number of Locations" required>
                           <input
@@ -333,7 +379,13 @@ export const GetStartedModal: React.FC<Props> = ({ open, onClose }) => {
                     {step < 3 ? (
                       <button
                         type="button"
-                        onClick={() => setStep(step + 1)}
+                        onClick={() => {
+                          if (step === 2) {
+                            handleStep2Continue();
+                          } else {
+                            setStep(step + 1);
+                          }
+                        }}
                         disabled={!canProceed}
                         className="bg-brand-blue hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-3 px-7 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-brand-blue/25"
                       >

@@ -2,67 +2,197 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Wrench, PhoneIncoming, Calendar, MessageSquare, CheckCircle2 } from 'lucide-react';
 
-const STAT_COLOR = '#6366f1'; // indigo / brand blue
+const STAT_COLOR = '#6366f1';
 
-function useCountUp(target: number, durationSec: number, start: boolean) {
-  const [value, setValue] = useState(0);
+/** Becomes true `delayMs` after `inView` flips true; resets to false when out of view. */
+function useDelayedTrigger(inView: boolean, delayMs: number) {
+  const [on, setOn] = useState(false);
   useEffect(() => {
-    if (!start) return;
+    if (!inView) {
+      setOn(false);
+      return;
+    }
+    const t = setTimeout(() => setOn(true), delayMs);
+    return () => clearTimeout(t);
+  }, [inView, delayMs]);
+  return on;
+}
+
+/** Animates from `from` → `to` over `durationSec` when `start` is true. Resets when false. */
+function useTween(from: number, to: number, durationSec: number, start: boolean) {
+  const [value, setValue] = useState(from);
+  useEffect(() => {
+    if (!start) {
+      setValue(from);
+      return;
+    }
     let raf = 0;
     const t0 = performance.now();
     const tick = (now: number) => {
       const t = Math.min((now - t0) / (durationSec * 1000), 1);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-      setValue(target * eased);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(from + (to - from) * eased);
       if (t < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [target, durationSec, start]);
+  }, [from, to, durationSec, start]);
   return value;
 }
 
-type StatCardProps = {
-  value: React.ReactNode;
+/** Reveals `text` one character at a time over `durationSec` when `start` is true. */
+function useTypewriter(text: string, durationSec: number, start: boolean) {
+  const [shown, setShown] = useState('');
+  useEffect(() => {
+    if (!start) {
+      setShown('');
+      return;
+    }
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / (durationSec * 1000), 1);
+      setShown(text.slice(0, Math.ceil(p * text.length)));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [text, durationSec, start]);
+  return shown;
+}
+
+type CardShellProps = {
+  number: React.ReactNode;
   label: string;
-  inViewDelay: number;
+  labelStart: boolean;
 };
 
-const StatCard: React.FC<StatCardProps> = ({ value, label, inViewDelay }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-80px' }}
-    transition={{ duration: 0.55, delay: inViewDelay, ease: 'easeOut' }}
-    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-9 lg:p-12 text-center transition-colors duration-500 hover:border-[color:var(--stat-color)]/50"
-    style={{ ['--stat-color' as string]: STAT_COLOR }}
-  >
-    {/* Soft glow on hover */}
+const CardShell: React.FC<CardShellProps> = ({ number, label, labelStart }) => {
+  const words = label.split(' ');
+  return (
     <div
-      className="pointer-events-none absolute -inset-px rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      style={{
-        background: `radial-gradient(circle at 50% 0%, ${STAT_COLOR}22, transparent 65%)`,
-      }}
-    />
-    {/* Diagonal shimmer sweep on hover */}
-    <div
-      className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-out"
-      style={{
-        background: `linear-gradient(110deg, transparent 35%, ${STAT_COLOR}1f 50%, transparent 65%)`,
-      }}
-    />
-
-    <div
-      className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-4 sm:mb-5"
-      style={{ color: STAT_COLOR }}
+      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-9 lg:p-12 text-center transition-colors duration-500 hover:border-[color:var(--stat-color)]/50"
+      style={{ ['--stat-color' as string]: STAT_COLOR }}
     >
-      {value}
+      {/* Hover glow */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: `radial-gradient(circle at 50% 0%, ${STAT_COLOR}22, transparent 65%)` }}
+      />
+      {/* Hover shimmer */}
+      <div
+        className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-out"
+        style={{ background: `linear-gradient(110deg, transparent 35%, ${STAT_COLOR}1f 50%, transparent 65%)` }}
+      />
+
+      <div
+        className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-4 sm:mb-5 min-h-[1em]"
+        style={{ color: STAT_COLOR }}
+      >
+        {number}
+      </div>
+
+      <div className="relative text-sm sm:text-base text-white font-medium leading-snug max-w-[200px] mx-auto">
+        {words.map((word, i) => (
+          <motion.span
+            key={`${label}-${i}`}
+            initial={{ opacity: 0, y: -14 }}
+            animate={labelStart ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
+            transition={{
+              type: 'spring',
+              stiffness: 380,
+              damping: 14,
+              delay: i * 0.08,
+            }}
+            className="inline-block mr-[0.25em]"
+          >
+            {word}
+          </motion.span>
+        ))}
+      </div>
     </div>
-    <div className="relative text-xs sm:text-sm text-gray-400 font-medium leading-snug max-w-[180px] mx-auto">
-      {label}
-    </div>
-  </motion.div>
-);
+  );
+};
+
+// --- Per-stat cards ---------------------------------------------------------
+
+type CardProps = { inView: boolean; cardDelayMs: number };
+
+const NUMBER_DURATION_S = 1.4; // count up / down duration
+const TYPEWRITER_DURATION_S = 0.9;
+const FADE_DURATION_S = 0.5;
+
+const CountUpStat: React.FC<CardProps> = ({ inView, cardDelayMs }) => {
+  const start = useDelayedTrigger(inView, cardDelayMs);
+  const v = useTween(0, 100, NUMBER_DURATION_S, start);
+  const labelStart = useDelayedTrigger(inView, cardDelayMs + NUMBER_DURATION_S * 1000);
+  return (
+    <CardShell
+      number={`${Math.round(v)}%`}
+      label="Every call answered. No exceptions."
+      labelStart={labelStart}
+    />
+  );
+};
+
+const CountDownStat: React.FC<CardProps> = ({ inView, cardDelayMs }) => {
+  const start = useDelayedTrigger(inView, cardDelayMs);
+  const v = useTween(50, 0, NUMBER_DURATION_S, start);
+  const labelStart = useDelayedTrigger(inView, cardDelayMs + NUMBER_DURATION_S * 1000);
+  return (
+    <CardShell
+      number={Math.round(v)}
+      label="Voicemails waiting for you"
+      labelStart={labelStart}
+    />
+  );
+};
+
+const TypewriterStat: React.FC<CardProps> = ({ inView, cardDelayMs }) => {
+  const start = useDelayedTrigger(inView, cardDelayMs);
+  const typed = useTypewriter('Instant', TYPEWRITER_DURATION_S, start);
+  const labelStart = useDelayedTrigger(inView, cardDelayMs + TYPEWRITER_DURATION_S * 1000);
+  return (
+    <CardShell
+      number={
+        <span>
+          {typed}
+          {start && typed.length < 'Instant'.length && (
+            <span className="inline-block w-[0.06em] align-baseline" style={{ background: STAT_COLOR }}>
+              &nbsp;
+            </span>
+          )}
+        </span>
+      }
+      label="Picks up before the second ring."
+      labelStart={labelStart}
+    />
+  );
+};
+
+const FadeStat: React.FC<CardProps> = ({ inView, cardDelayMs }) => {
+  const start = useDelayedTrigger(inView, cardDelayMs);
+  const labelStart = useDelayedTrigger(inView, cardDelayMs + FADE_DURATION_S * 1000);
+  return (
+    <CardShell
+      number={
+        <motion.span
+          key={start ? 'on' : 'off'}
+          initial={{ opacity: 0, y: 18 }}
+          animate={start ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: FADE_DURATION_S, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block"
+        >
+          24/7
+        </motion.span>
+      }
+      label="Nights, weekends, holidays. Always on."
+      labelStart={labelStart}
+    />
+  );
+};
+
+// --- Section ----------------------------------------------------------------
 
 export const WhileYoureWorking: React.FC = () => {
   const timeline = [
@@ -73,10 +203,9 @@ export const WhileYoureWorking: React.FC = () => {
     { time: '8:35 AM', icon: <CheckCircle2 size={18} />, title: 'You get a text summary', subtitle: '"New Job: Kitchen leak at 4521 Oak Dr. Booked 2-4 PM."', color: 'violet' },
   ];
 
-  // Trigger the count-up on the percentage stat when the stat grid enters view
+  // Stat grid in-view detection — once: false re-fires every time it scrolls in
   const statsRef = useRef<HTMLDivElement>(null);
-  const statsInView = useInView(statsRef, { once: true, margin: '-80px' });
-  const pct = useCountUp(100, 1.6, statsInView);
+  const statsInView = useInView(statsRef, { once: false, margin: '-100px 0px -100px 0px' });
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -138,28 +267,12 @@ export const WhileYoureWorking: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right: 2x2 stat grid */}
+          {/* Right: 2x2 stat grid — animates sequentially, replays every scroll-in */}
           <div ref={statsRef} className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-7">
-            <StatCard
-              value={`${Math.round(pct)}%`}
-              label="of calls answered. No exceptions."
-              inViewDelay={0}
-            />
-            <StatCard
-              value="0"
-              label="voicemails waiting for you"
-              inViewDelay={0.1}
-            />
-            <StatCard
-              value={<>&lt;1s</>}
-              label="to pick up. Faster than any human."
-              inViewDelay={0.2}
-            />
-            <StatCard
-              value="24/7"
-              label="coverage. Nights, weekends, holidays."
-              inViewDelay={0.3}
-            />
+            <CountUpStat inView={statsInView} cardDelayMs={0} />
+            <CountDownStat inView={statsInView} cardDelayMs={200} />
+            <TypewriterStat inView={statsInView} cardDelayMs={400} />
+            <FadeStat inView={statsInView} cardDelayMs={600} />
           </div>
         </div>
       </div>

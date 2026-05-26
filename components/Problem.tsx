@@ -70,50 +70,50 @@ export const Problem: React.FC = () => {
               {/* Left-edge gradient fade — blends image into the section bg */}
               <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#020617] via-[#020617]/60 to-transparent pointer-events-none"></div>
 
-              {/* Mobile notification — bottom 16px, centered via left:50% + framer-motion x:-50%.
-                  Using framer-motion's x value so the translateX composes with its animation
-                  transform (otherwise framer-motion would overwrite an inline transform). */}
+              {/* Mobile notification — top-right corner of the image, 16px from
+                  top and right, max 55% of image width. Smaller internals so it
+                  doesn't overlap the plumber. */}
               <motion.div
-                initial={{ opacity: 0, y: 12, x: '-50%' }}
-                animate={{ opacity: 1, y: 0, x: '-50%' }}
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
-                className="md:hidden bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] p-2.5"
+                className="md:hidden bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] p-2"
                 style={{
                   position: 'absolute',
-                  bottom: '16px',
-                  left: '50%',
-                  maxWidth: '70%',
+                  top: '16px',
+                  right: '16px',
+                  maxWidth: '55%',
                 }}
               >
-                <div className="flex items-center gap-2.5 mb-2">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="relative shrink-0">
                     <span className="absolute inset-0 rounded-full bg-red-500/60 animate-ping"></span>
-                    <div className="relative w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(239,68,68,0.7)]">
-                      <PhoneMissed size={15} strokeWidth={2.5} />
+                    <div className="relative w-7 h-7 rounded-full bg-red-500 flex items-center justify-center text-white shadow-[0_0_18px_rgba(239,68,68,0.7)]">
+                      <PhoneMissed size={13} strokeWidth={2.5} />
                     </div>
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-white font-bold text-[13px] leading-tight">Missed Call</h4>
-                    <p className="text-gray-300 text-[10px] mt-0.5 leading-tight">Potential Customer</p>
+                    <h4 className="text-white font-bold text-[11px] leading-tight truncate">Missed Call</h4>
+                    <p className="text-gray-300 text-[9px] mt-0.5 leading-tight truncate">Potential Customer</p>
                   </div>
                 </div>
                 <button
                   type="button"
-                  className="w-full py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold text-xs transition-colors shadow shadow-red-500/30"
+                  className="w-full py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-md font-bold text-[10px] transition-colors shadow shadow-red-500/30"
                 >
                   Call back now
                 </button>
               </motion.div>
 
-              {/* Desktop notification — bottom-right corner, 24px from bottom and right */}
+              {/* Desktop notification — top-right corner, 24px from top and right */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: -12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
                 className="hidden md:block bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] p-4"
                 style={{
                   position: 'absolute',
-                  bottom: '24px',
+                  top: '24px',
                   right: '24px',
                   maxWidth: '280px',
                 }}

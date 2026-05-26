@@ -24,7 +24,7 @@ export const SpeedToLead: React.FC = () => {
               <span>SPEED TO LEAD</span>
             </div>
 
-            <h2 className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.625rem,6vw,3.5rem)] font-black text-white mb-8 leading-[1.1] tracking-tight">
               The First Contractor to Answer <span className="text-emerald-400">Wins.</span>
             </h2>
 

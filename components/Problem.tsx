@@ -24,7 +24,7 @@ export const Problem: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-xl"
           >
-            <h2 className="text-[clamp(1.875rem,6vw,3.25rem)] font-black text-white mb-5 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.625rem,6vw,3.25rem)] font-black text-white mb-5 leading-[1.1] tracking-tight">
               Every Missed Call Is a Job You Already Lost
             </h2>
 
@@ -68,13 +68,19 @@ export const Problem: React.FC = () => {
               {/* Left-edge gradient fade — blends image into the section bg */}
               <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#020617] via-[#020617]/60 to-transparent pointer-events-none"></div>
 
-              {/* Missed Call Notification Card — positioned in the upper-right empty space */}
+              {/* Missed Call Notification Card
+                  Mobile: centered along the bottom margin below the plumber, smaller
+                  sm+: tucked into the upper-right empty space beside the plumber */}
               <motion.div
                 initial={{ opacity: 0, y: -16, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.6, type: 'spring', bounce: 0.35 }}
-                className="absolute top-[14%] right-[6%] w-[58%] max-w-[260px] bg-black/70 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+                /* Center via margin auto on mobile (avoids touching transform, which
+                   Framer Motion is animating). Anchor to top-right at sm+. */
+                className="absolute bottom-3 left-0 right-0 mx-auto w-[78%] max-w-[220px] p-3
+                           sm:left-auto sm:right-[6%] sm:bottom-auto sm:top-[14%] sm:mx-0 sm:w-[58%] sm:max-w-[260px] sm:p-4
+                           bg-black/80 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="relative shrink-0">

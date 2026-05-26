@@ -27,7 +27,7 @@ export const TrustedBy: React.FC = () => {
   return (
     <section className="py-20 border-y border-white/5 bg-white/[0.02]">
       <div className="container mx-auto px-6 mb-12">
-        <h2 className="text-center text-xs font-bold text-gray-500 tracking-[0.3em] uppercase">
+        <h2 className="text-center text-[10px] sm:text-xs font-bold text-gray-500 tracking-[0.12em] sm:tracking-[0.3em] uppercase px-4 break-words">
           Integrates with your existing tech stack
         </h2>
       </div>

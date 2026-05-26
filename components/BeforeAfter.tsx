@@ -16,7 +16,7 @@ export const BeforeAfter: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight"
+            className="text-[clamp(1.5rem,6vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight"
           >
             Before Jevus AI vs. <span className="text-brand-blue">After Jevus AI</span>
           </motion.h2>
@@ -97,7 +97,7 @@ export const BeforeAfter: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-2xl md:text-3xl font-black text-white mb-8">
+          <p className="text-lg sm:text-2xl md:text-3xl font-black text-white mb-8 px-2">
             That's <span className="text-emerald-400">$57,600/year</span> in recovered revenue.
           </p>
           <CalendlyButton className="bg-brand-blue hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-xl text-lg inline-flex items-center gap-2 shadow-xl shadow-brand-blue/25 transition-all transform hover:scale-105 cursor-pointer">

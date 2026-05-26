@@ -227,7 +227,7 @@ export const WhileYoureWorking: React.FC = () => {
               <span>A DAY WITH JEVUS</span>
             </div>
 
-            <h2 className="text-[clamp(1.875rem,6.5vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight">
+            <h2 className="text-[clamp(1.625rem,6.2vw,3.5rem)] font-black text-white mb-6 leading-[1.1] tracking-tight">
               You Keep Working.<br />Jevus Keeps <span className="text-brand-violet">Booking.</span>
             </h2>
 

@@ -34,12 +34,24 @@
 }
 
 @layer base {
-  body {
+  html, body {
     @apply bg-brand-dark text-gray-300 antialiased selection:bg-brand-blue/30;
+    overflow-x: clip;
+    max-width: 100vw;
   }
-  
+
+  body {
+    width: 100%;
+  }
+
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Belt-and-suspenders: prevent any section from being wider than the viewport on mobile */
+  main, header, footer, section {
+    max-width: 100vw;
+    overflow-x: clip;
   }
 }
 
@@ -69,7 +81,7 @@
   }
   
   .heading-lg {
-    font-size: clamp(1.875rem, 5.5vw, 3.75rem);
+    font-size: clamp(1.625rem, 5.5vw, 3.75rem);
     @apply font-bold tracking-tight text-white;
   }
 }

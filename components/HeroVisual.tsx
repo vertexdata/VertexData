@@ -13,14 +13,22 @@ const INDUSTRIES = [
 ];
 
 // Orbit radius as a % of the (square) container's half-width.
-// Pills sit on a circle this far from the container center.
-const RADIUS_PCT = 44;
+const RADIUS_PCT_MOBILE = 40;
+const RADIUS_PCT_DESKTOP = 44;
 
 export const HeroVisual: React.FC = () => {
+  const [radius, setRadius] = React.useState(RADIUS_PCT_DESKTOP);
+  React.useEffect(() => {
+    const update = () => setRadius(window.innerWidth < 640 ? RADIUS_PCT_MOBILE : RADIUS_PCT_DESKTOP);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   return (
     // Self-contained square wrapper, capped at 480px, centered, never bleeds
-    // outside the right column.
-    <div className="relative mx-auto w-full max-w-[480px] aspect-square">
+    // outside the right column. min-w-0 lets it shrink inside flex/grid parents.
+    <div className="relative mx-auto w-full max-w-[480px] aspect-square min-w-0">
       {/* Soft glow behind the receptionist */}
       <div className="pointer-events-none absolute inset-[18%] -z-10 rounded-full bg-gradient-to-br from-brand-blue/30 to-brand-violet/30 blur-3xl" />
 
@@ -39,8 +47,8 @@ export const HeroVisual: React.FC = () => {
           // 9 labels, 40° apart, starting at the top of the clock
           const angleDeg = -90 + (360 / INDUSTRIES.length) * i;
           const angleRad = (angleDeg * Math.PI) / 180;
-          const xPct = Math.cos(angleRad) * RADIUS_PCT;
-          const yPct = Math.sin(angleRad) * RADIUS_PCT;
+          const xPct = Math.cos(angleRad) * radius;
+          const yPct = Math.sin(angleRad) * radius;
           return (
             <div
               key={industry}

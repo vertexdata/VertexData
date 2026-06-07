@@ -14,7 +14,7 @@ export const CalendlyButton: React.FC<CalendlyButtonProps> = ({
   children
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/vertexdata-info/15min-jevus-ai-full-demo";
+  const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/jevus-info/30min";
 
   return (
     <>

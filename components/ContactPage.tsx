@@ -13,7 +13,7 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="bg-brand-dark min-h-screen">
       <SEOHead
-        title="Contact Jevus AI | Get in Touch | AI Voice Receptionist"
+        title="Contact Jevus AI | Book a Demo | Get in Touch"
         description="Contact Jevus AI for a free demo of our AI voice receptionist for home service businesses. Call, email, or fill out our form."
         canonical="/contact"
         keywords="contact Jevus AI, AI receptionist demo, Jevus AI phone number, Jevus AI support"

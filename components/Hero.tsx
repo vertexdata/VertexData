@@ -18,15 +18,6 @@ export const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
           {/* Left: copy */}
           <div className="text-center lg:text-left min-w-0">
-            <div className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 bg-brand-blue/10 border border-brand-blue/20 rounded-full px-3 sm:px-4 py-1.5 mb-8 animate-fade-in max-w-full">
-              <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
-              </span>
-              <span className="text-brand-blue text-xs sm:text-sm font-bold uppercase tracking-wider">Experience Jevus Live</span>
-              <a href="tel:+15673353887" className="text-white hover:text-brand-blue transition-colors text-xs sm:text-sm font-mono font-bold">(567) 335-3887</a>
-            </div>
-
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6 break-words">
               Your 24/7 AI Receptionist for{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-violet">

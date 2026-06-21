@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Calendar, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { CalendlyButton } from './CalendlyButton';
 
 export const FinalCTA: React.FC = () => {
@@ -51,10 +51,6 @@ export const FinalCTA: React.FC = () => {
                 Book a Live Demo
                 <ArrowRight size={20} />
               </CalendlyButton>
-              <a href="tel:+15673353887" className="btn-secondary w-full sm:w-auto text-lg px-12 py-5">
-                <Phone size={20} />
-                Talk to Jevus Now
-              </a>
             </div>
 
             <div className="mt-12 flex flex-wrap justify-center gap-8 text-gray-400 font-bold uppercase tracking-widest text-xs">

@@ -18,7 +18,7 @@ const data = {
     { feature: 'Call Transcripts & Recordings', jevus: true, competitor: false },
     { feature: 'Consistent Quality Every Call', jevus: true, competitor: false },
     { feature: 'Per-Minute Charges', jevus: 'None — flat rate', competitor: '$1-2/minute' },
-    { feature: 'Monthly Cost', jevus: '$497-1,497', competitor: '$300-800+' },
+    { feature: 'Monthly Cost', jevus: 'Custom', competitor: '$300-800+' },
     { feature: 'Setup Time', jevus: '5 minutes', competitor: '1-2 weeks' },
   ],
   jevusPros: [

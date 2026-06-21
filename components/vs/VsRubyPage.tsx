@@ -17,7 +17,7 @@ const data = {
     { feature: 'Books Appointments Directly', jevus: true, competitor: true },
     { feature: 'Consistent Quality Every Call', jevus: true, competitor: false },
     { feature: 'No Per-Minute Overages', jevus: true, competitor: false },
-    { feature: 'Monthly Cost', jevus: '$497-1,497', competitor: '$349-1,499 + overages' },
+    { feature: 'Monthly Cost', jevus: 'Custom', competitor: '$349-1,499 + overages' },
     { feature: 'After-Hours Coverage', jevus: 'Included', competitor: 'Extra cost' },
     { feature: 'Receptionist Type', jevus: 'AI (trade-trained)', competitor: 'Human (general)' },
   ],

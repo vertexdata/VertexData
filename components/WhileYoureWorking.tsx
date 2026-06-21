@@ -71,7 +71,7 @@ const CardShell: React.FC<CardShellProps> = ({ number, label, labelStart }) => {
   const words = label.split(' ');
   return (
     <div
-      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-9 lg:p-12 text-center transition-colors duration-500 hover:border-[color:var(--stat-color)]/50"
+      className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-9 lg:p-10 text-center transition-colors duration-500 hover:border-[color:var(--stat-color)]/50"
       style={{ ['--stat-color' as string]: STAT_COLOR }}
     >
       {/* Hover glow */}
@@ -86,7 +86,7 @@ const CardShell: React.FC<CardShellProps> = ({ number, label, labelStart }) => {
       />
 
       <div
-        className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-4 sm:mb-5 min-h-[1em]"
+        className="relative text-[clamp(2rem,4vw,3.5rem)] font-black tracking-tighter leading-none mb-4 sm:mb-5 min-h-[1em]"
         style={{ color: STAT_COLOR }}
       >
         {number}

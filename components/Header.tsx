@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
           <nav className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ${
             isScrolled ? 'bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl' : 'bg-transparent border border-transparent'
           }`}>
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-8">
               <div className="flex flex-col">
                 <a href="/" className="text-2xl font-black text-white tracking-tighter leading-none">
                   JEVUS<span className="text-brand-blue">.AI</span>
@@ -52,12 +52,12 @@ export const Header: React.FC = () => {
                 </span>
               </div>
 
-              <div className="hidden lg:flex items-center gap-8">
+              <div className="hidden lg:flex items-center xl:gap-6 gap-5">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                    className="whitespace-nowrap text-sm font-medium text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <a
                 href="tel:+15673353887"
                 className="hidden xl:flex items-center gap-2 text-sm font-bold text-white hover:text-brand-blue transition-colors"
